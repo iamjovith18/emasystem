@@ -17,7 +17,7 @@
             <h5>List of Accessory</h5>
           </div>
           <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
+            <table class="table table-bordered data-table" id="accessory">
               <thead>
                 <tr>
                   <th>Accessory Name</th>
@@ -25,6 +25,7 @@
                   <th>Brand Name</th>
                   <th>Model Name</th>
                   <th>Serial No.</th>
+                  <th>Batch No.</th>
                   <th>Quantity</th>
                   <th>Min Qty</th>
                   <th>Created Date</th>
@@ -40,6 +41,7 @@
                             <td>{{strtoupper($accessory->brand->brand)}}</td>
                             <td>{{strtoupper($accessory->model_no)}}</td>
                             <td>{{strtoupper($accessory->serial_no)}}</td>
+                            <td>{{strtoupper($accessory->batch_no)}}</td>
                             <td>{{$accessory->quantity}}</td>
                             <td>{{$accessory->min_qty}}</td>                 
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>

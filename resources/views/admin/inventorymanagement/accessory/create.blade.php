@@ -60,6 +60,12 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label">Batch No.</label>
+                <div class="controls">
+                  <input type="text" class="span6" name="batch_no" value="{{ old('batch_no') }}" id="required">
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label">Quantity</label>
                 <div class="controls">
                   <input type="number" class="span6" name="quantity" value="1" id="required">

@@ -60,6 +60,7 @@ class AccessoryController extends Controller
             'brand_id'=>$request->brand_id,
             'model_no'=>$request->model_no,
             'serial_no'=>$request->serial_no,
+            'batch_no'=>$request->batch_no,
             'quantity'=>$request->quantity,
             'min_qty'=>$request->min_qty
             
@@ -123,6 +124,7 @@ class AccessoryController extends Controller
         $accessory->brand_id =$request->brand_id;
         $accessory->model_no =$request->model_no;
         $accessory->serial_no =$request->serial_no;
+        $accessory->batch_no =$request->batch_no;
         $accessory->quantity =$request->quantity;
         $accessory->min_qty =$request->min_qty;
 

@@ -10,5 +10,7 @@ class Component_User extends Model
         'component_id','username_id'
     ];
 
-  
+    public function component(){
+        return $this->belongsTo('App\Component','component_id','id');
+    }
 }

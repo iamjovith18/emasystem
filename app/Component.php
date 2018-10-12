@@ -22,5 +22,7 @@ class Component extends Model
         return $this->belongsTo('App\Usercred');
     }
 
-  
+    public function component_users(){
+        return $this->hasMany('App\Component_User','id','component_id');
+    }
 }

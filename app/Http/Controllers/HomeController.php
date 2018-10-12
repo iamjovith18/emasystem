@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Usercred;
+use App\Accessory;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $total_users = Usercred::count();
+        $total_headsets = Accessory::where('category_id','=',3)->count();
+        
+
+        return view('home')->with('total_users',$total_users)
+                           ->with('total_headsets',$total_headsets);
     }
 }

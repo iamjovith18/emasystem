@@ -20,6 +20,7 @@ class CreateAccessoriesTable extends Migration
             $table->integer('brand_id');
             $table->string('model_no')->nullable();
             $table->string('serial_no')->nullable();
+            $table->string('batch_no')->nullable();
             $table->string('quantity')->nullable();
             $table->string('min_qty')->nullable();
             $table->timestamps();

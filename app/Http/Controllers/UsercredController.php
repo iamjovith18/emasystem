@@ -78,15 +78,12 @@ class UsercredController extends Controller
      */
     public function show(Usercred $usercred,$id)
     {
-        $username= Usercred::find($id);
-        $component_users = Component_User::all();
-        $components = Component::all();
-
-         Component::with('username')->join('Usercred','$username.id','=','Component_User.username_id')
-                            ->where('Component_User.id', '=', 'Usercred.id' );
+        $user= Usercred::findOrFail($id);
+        $component_users = Component_User::where('username_id',$user->id)->get();
+       
        
 
-        return view('admin.usermanagement.show')->with('username',$username);
+        return view('admin.usermanagement.show',compact('component_users','user'));
     }
 
     /**
