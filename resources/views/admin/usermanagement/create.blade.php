@@ -43,10 +43,10 @@
                 <div class="controls">
                   <input type="email" class="span4" name="email_add" value="{{ old('email_add') }}"  id="required">
                   <select name="domain_name" id="required">
-                  <option selected disabled>Select</option>
-                  <option value="@crazydomain.com">@crazydomain.com</option>
-                  <option value="@dreamscapenetworks.com">@dreamscapenetworks.com</option>
-                  <option value="@vodien.com">@vodien.com</option>
+                    <option selected disabled>Select</option>
+                    <option value="@crazydomain.com">@crazydomain.com</option>
+                    <option value="@dreamscapenetworks.com">@dreamscapenetworks.com</option>
+                    <option value="@vodien.com">@vodien.com</option>
                   </select>
                 </div>
             </div>
