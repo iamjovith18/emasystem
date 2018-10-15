@@ -44,7 +44,11 @@
                 @else
                 <li class="bg_lr"><i class="icon-headphones"></i> <strong>{{$total_headsets}}</strong> <strong><h5>Total Headsets</h5></li>
                 @endif
-                <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>656</strong> <small>Total Shop</small></li>
+                @if($total_headsets > 1)
+                <li class="bg_lh"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisk<h5></strong></li>
+                @else
+                <li class="bg_lr"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisk</h5></li>
+                @endif
                 <li class="bg_lh"><i class="icon-mouse-pointer"></i> <strong>9540</strong> <small>Total Orders</small></li>
                 <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
                 <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li>

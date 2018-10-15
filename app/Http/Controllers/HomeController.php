@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usercred;
 use App\Accessory;
+use App\Component;
 
 class HomeController extends Controller
 {
@@ -28,9 +29,10 @@ class HomeController extends Controller
 
         $total_users = Usercred::count();
         $total_headsets = Accessory::where('category_id','=',3)->count();
-        
+        $total_hdd = Component::where('category_id','=',5)->count();
 
         return view('home')->with('total_users',$total_users)
-                           ->with('total_headsets',$total_headsets);
+                           ->with('total_headsets',$total_headsets)
+                           ->with('total_hdd',$total_hdd);
     }
 }
