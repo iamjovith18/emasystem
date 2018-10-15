@@ -81,9 +81,7 @@ class UsercredController extends Controller
     {
         $user= Usercred::findOrFail($id);
         $component_users = Component_User::where('username_id',$user->id)->get();
-       
-       
-
+        
         return view('admin.usermanagement.show',compact('component_users','user'));
     }
 
