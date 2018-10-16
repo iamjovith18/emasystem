@@ -150,6 +150,16 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'accessory.delete'
     ]);
 
+    Route::get('/accessory/checkout/{id}',[
+        'uses'=>'AccessoryController@checkout',
+        'as'=>'accessory.checkout'
+    ]);
+
+    Route::post('/accessory/order/{id}',[
+        'uses'=>'AccessoryController@order',
+        'as'=>'accessory.order'
+    ]);
+
     //Route for components
 
     Route::get('/component',[

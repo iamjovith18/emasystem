@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\accessory;
 use App\Category;
 use App\Brand;
+use App\Usercred;
+use App\Accessory_User;
 use Illuminate\Http\Request;
 
 class AccessoryController extends Controller
@@ -154,6 +156,36 @@ class AccessoryController extends Controller
             'message' => 'Accessory has been successfully deleted.', 
             'alert-type' => 'error'
         );
+        return redirect()->route('accessory')->with($notification);
+    }
+
+    public function checkout($id){
+
+        $accessory  = accessory::find($id);
+       
+        return view('admin.inventorymanagement.accessory.checkout')->with('accessory',$accessory)->with('usernames',Usercred::all());
+
+    }
+
+    public function order(Request $request, $id){
+        $this->validate($request,[
+            'accessory_id'=>'required',
+            'username_id'=>'required',
+            'order_qty'=> 'required',
+        ]);
+
+        $accessory_user = Accessory_User::create([
+            'accessory_id'=>$request->accessory_id,
+            'username_id'=>$request->username_id,
+        ]); 
+
+        $accessory = accessory::find($id)->increment('order_qty',$request->order_qty);
+
+        $notification = array(
+            'message' => 'Accessory has been successfully checkout.', 
+            'alert-type' => 'success'
+        );
+
         return redirect()->route('accessory')->with($notification);
     }
 }

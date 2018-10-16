@@ -26,8 +26,8 @@
                   <th>Model Name</th>
                   <th>Serial No.</th>
                   <th>Batch No.</th>
-                  <th>Quantity</th>
-                  <th>Min Qty</th>
+                  <th>Total</th>
+                  <th>Available</th>
                   <th>Created Date</th>
                   <th>Action</th>
                 </tr>
@@ -43,9 +43,10 @@
                             <td>{{strtoupper($accessory->serial_no)}}</td>
                             <td>{{strtoupper($accessory->batch_no)}}</td>
                             <td>{{$accessory->quantity}}</td>
-                            <td>{{$accessory->min_qty}}</td>                 
+                            <td>{{$accessory->quantity - $accessory->order_qty}}</td>                  
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
                             <td>
+                              <a href="{{route('accessory.checkout',['id'=>$accessory->id])}}" class="btn-btn-warning">Checkout</a> |
                               <a href="{{route('accessory.edit',['id'=>$accessory->id])}}" class="btn-btn-warning">Edit</a> |
                               <a href="{{route('accessory.delete',['id'=>$accessory->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" >Delete</a>
                             </td>
