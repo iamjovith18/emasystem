@@ -10,7 +10,7 @@
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-  <div class="container-fluid">
+ <!--  <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
         <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
@@ -25,7 +25,7 @@
         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li>
 
       </ul>
-    </div>
+    </div> -->
 <!--End-Action boxes-->    
 
 <!--Chart-box-->    
@@ -45,13 +45,13 @@
                 <li class="bg_lr"><i class="icon-headphones"></i> <strong>{{$total_headsets}}</strong> <strong><h5>Total Headsets</h5></li>
                 @endif
                 @if($total_headsets > 1)
-                <li class="bg_lh"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisk<h5></strong></li>
+                <li class="bg_lh"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisks<h5></strong></li>
                 @else
-                <li class="bg_lr"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisk</h5></li>
+                <li class="bg_lr"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisks</h5></strong></li>
                 @endif
-                <li class="bg_lh"><i class="icon-mouse-pointer"></i> <strong>9540</strong> <small>Total Orders</small></li>
-                <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
-                <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li>
+                <li class="bg_lh"><i class="icon-hand-up"></i> <strong>9540</strong> <strong><h5>Total Mouse</h5></strong></li>
+                <li class="bg_lh"><i class="icon-desktop"></i> <strong>10</strong> <strong><h5>Total Monitosr</h5></strong></li>
+                <li class="bg_lh"><i class="icon-hdd"></i> <strong>8540</strong> <strong><h5>Total System Units</h5></strong></li>
               </ul>
             </div>
           </div>

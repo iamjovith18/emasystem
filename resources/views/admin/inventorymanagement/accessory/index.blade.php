@@ -46,7 +46,11 @@
                             <td>{{$accessory->quantity - $accessory->order_qty}}</td>                  
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
                             <td>
-                              <a href="{{route('accessory.checkout',['id'=>$accessory->id])}}" class="btn-btn-warning">Checkout</a> |
+                              @if($accessory->quantity - $accessory->order_qty <= 0 )
+                              <a>No Available |</a>
+                              @else
+                              <a href="{{route('accessory.checkout',['id'=>$accessory->id])}}" class="btn-btn-warning">Checkout |</a>
+                              @endif
                               <a href="{{route('accessory.edit',['id'=>$accessory->id])}}" class="btn-btn-warning">Edit</a> |
                               <a href="{{route('accessory.delete',['id'=>$accessory->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" >Delete</a>
                             </td>

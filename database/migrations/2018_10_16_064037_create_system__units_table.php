@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccessoriesTable extends Migration
+class CreateSystemUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateAccessoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessories', function (Blueprint $table) {
+        Schema::create('system__units', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('accessory_name');
-            $table->integer('category_id');
             $table->integer('brand_id');
-            $table->string('model_no')->nullable();
+            $table->integer('category_id');
+            $table->string('model')->nullable();
             $table->string('serial_no')->nullable();
-            $table->string('batch_no')->nullable();
-            $table->string('quantity')->nullable();
-            $table->string('min_qty')->nullable();
+            $table->string('asset_tag')->nullable();
+            $table->integer('total')->default(1);
             $table->integer('order_qty')->default(0);
             $table->timestamps();
         });
@@ -35,6 +33,6 @@ class CreateAccessoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessories');
+        Schema::dropIfExists('system__units');
     }
 }

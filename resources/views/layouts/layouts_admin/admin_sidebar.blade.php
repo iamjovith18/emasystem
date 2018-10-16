@@ -11,14 +11,13 @@
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Asset Management</span></a>
       <ul>
         <li><a href="index2.html">List</a></li>
-        <li><a href="gallery.html">All Deployed</a></li>
         <li><a href="{{route('accessory')}}">Accessories</a></li>
         <li><a href="{{route('component')}}">Components</a></li>
+        <li><a href="{{route('system-unit')}}">System Units</a></li>
       </ul>
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Settings</span></a>
       <ul>
-        <li><a href="invoice.html">Asset Models</a></li>
         <li><a href="{{route('brand')}}">Brands</a></li>
         <li><a href="{{route('category')}}">Categories</a></li>
       </ul>

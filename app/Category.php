@@ -18,4 +18,8 @@ class Category extends Model
     public function component(){
         return $this->hasMany('App\Component');
     }
+
+    public function system_unit(){
+        return $this->hasMany('App\System_Unit');
+    }
 }

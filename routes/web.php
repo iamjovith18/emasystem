@@ -199,10 +199,51 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'component.order'
     ]);
 
+    //System Units
+
+    Route::get('/system-units',[
+        'uses'=>'SystemUnitController@index',
+        'as'=>'system-unit'
+    ]);
+
+    Route::get('/system-units/create',[
+        'uses'=>'SystemUnitController@create',
+        'as'=>'system-unit.create'
+    ]);
+    Route::post('/system-units/store',[
+        'uses'=>'SystemUnitController@store',
+        'as'=>'system-unit.store'
+    ]);
+
+    Route::get('/system-units/edit/{id}',[
+        'uses'=>'SystemUnitController@edit',
+        'as'=>'system-unit.edit'
+    ]);
+    Route::post('/system-units/update/{id}',[
+        'uses'=>'SystemUnitController@update',
+        'as'=>'system-unit.update'
+    ]);
+    Route::get('/system-units/delete/{id}',[
+        'uses'=>'SystemUnitController@destroy',
+        'as'=>'system-unit.delete'
+    ]);
+
+    Route::get('/system-units/checkout/{id}',[
+        'uses'=>'SystemUnitController@checkout',
+        'as'=>'system-unit.checkout'
+    ]);
+
+    Route::post('/system-units/order/{id}',[
+        'uses'=>'SystemUnitController@order',
+        'as'=>'system-unit.order'
+    ]);
+
     //Register admin
 
     Route::get('/administration/create',[
         'uses'=>'Auth\RegisterController@create',
         'as'=>'register.create'
     ]);
+
+
 });
