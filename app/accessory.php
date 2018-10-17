@@ -15,6 +15,14 @@ class accessory extends Model
     public function brand(){
         return $this->belongsTo('App\Brand');
     }
+
+    public function user(){
+        return $this->belongsTo('App\Usercred');
+    }
+
+    public function accessory_users(){
+        return $this->hasMany('App\Accessory_User','id','accessory_id');
+    }
 }
 
 

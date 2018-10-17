@@ -18,6 +18,8 @@ class Usercred extends Model
         return $this->belongsToMany('App\Usercred','App\Component','App\Component_User');
     }
 
+    public function accessory_user(){
+        return $this->belongsToMany('App\Usercred','App\Accesory','App\Accessory_User');
+    }
 
-    
 }

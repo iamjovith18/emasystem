@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Usercred;
 use App\Component;
 use App\Component_User;
+use App\Accessory;
+use App\Accessory_User;
+use App\System_Unit;
+use App\Unit_User;
 use Illuminate\Http\Request;
 use Session;
 
@@ -81,8 +85,10 @@ class UsercredController extends Controller
     {
         $user= Usercred::findOrFail($id);
         $component_users = Component_User::where('username_id',$user->id)->get();
+        $accessory_users = Accessory_User::where('username_id',$user->id)->get();
+        $system_users = Unit_User::where('username_id',$user->id)->get();
         
-        return view('admin.usermanagement.show',compact('component_users','user'));
+        return view('admin.usermanagement.show',compact('component_users','user'))->with('accessory_users',$accessory_users)->with('system_users',$system_users);
     }
 
     /**

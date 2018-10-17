@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-/* Create New Employee */
+/* Update Component */
 
 <div id="content">
 <div id="content-header">
-  <div id="breadcrumb"> <a href="{{route('home')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{route('component')}}" class="tip-bottom">View Component List</a></div>
-  <h1>Add New Component</h1>
+  <div id="breadcrumb"> <a href="{{route('home')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{route('accessory')}}" class="tip-bottom">View Component List</a></div>
+  <h1>Update Unit</h1>
 </div>
 <div class="container-fluid">
   <hr>
@@ -15,25 +15,19 @@
     <div class="span12">
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Component Info</h5>
+          <h5>Edit Info</h5>
         </div>
         <div class="widget-content nopadding">
-          <form class="form-horizontal" method="post" action="{{route('component.store')}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+          <form class="form-horizontal" method="post" action="{{route('system-unit.update',['id'=>$system_units->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
             {{csrf_field()}}
             <div class="control-group">
                 <label class="control-label">Brand Name</label>
                 <div class="controls">
                     <select name="brand_id" required>
                         @foreach($brands as $brand)
-                            <option value="{{$brand->id}}">{{strtoupper($brand->brand)}}</option>
+                        <option value="{{$brand->id}}" @if($system_units->brand->id==$brand->id) selected @endif > {{$brand->brand}}</option>
                         @endforeach
                     </select> 
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Model Name</label>
-                <div class="controls">
-                  <input type="text" autofocus class="span6" name="component_name" value="{{ old('component_name') }}" id="required">
                 </div>
             </div>
             <div class="control-group">
@@ -41,22 +35,34 @@
                 <div class="controls">
                     <select name="category_id" required >
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{strtoupper($category->category_name)}}</option>
+                            <option value="{{$category->id}}" @if($system_units->category->id==$category->id) selected @endif > {{$category->category_name}}</option>
                         @endforeach
                     </select>      
                 </div>
             </div>
+            <div class="control-group">
+                <label class="control-label">Model Name</label>
+                <div class="controls">
+                  <input type="text" autofocus class="span6" name="model" value="{{$system_units->model }}" id="required">
+                </div>
+            </div>
             
             <div class="control-group">
-                <label class="control-label">Serial No.</label>
+                <label class="control-label">Asset Tag</label>
                 <div class="controls">
-                  <input type="text" class="span6" name="serial_no" value="{{ old('serial_no') }}" id="required">
+                  <input type="text" class="span6" name="asset_tag" value="{{ $system_units->asset_tag }}" id="required">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Total Qty</label>
+                <label class="control-label">Serial No.</label>
                 <div class="controls">
-                  <input type="number" class="span6" name="total" value="1" id="required">
+                  <input type="text" class="span6" name="serial_no" value="{{ $system_units->serial_no }}" id="required">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Total</label>
+                <div class="controls">
+                  <input type="number" class="span6" name="total" value="{{$system_units->total}}" id="required">
                 </div>
             </div>    
             <div class="form-actions">

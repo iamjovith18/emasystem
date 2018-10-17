@@ -71,12 +71,6 @@
                   <input type="number" class="span6" name="quantity" value="1" id="required">
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label">Min Qty</label>
-                <div class="controls">
-                  <input type="number" class="span6" name="min_qty" value="1" id="required">
-                </div>
-            </div>
             
             <div class="form-actions">
                 <input type="submit" value="Save" class="btn btn-success">
