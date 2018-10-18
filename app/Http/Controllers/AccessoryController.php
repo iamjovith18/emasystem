@@ -18,6 +18,7 @@ class AccessoryController extends Controller
      */
     public function index()
     {
+        
         $categories = Category::orderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
         $accessories = accessory::orderBy('accessory_name','ASC')->get();
@@ -163,7 +164,7 @@ class AccessoryController extends Controller
 
         $accessory  = accessory::find($id);
        
-        return view('admin.inventorymanagement.accessory.checkout')->with('accessory',$accessory)->with('usernames',Usercred::all());
+        return view('admin.inventorymanagement.accessory.checkout')->with('accessory',$accessory)->with('usernames',Usercred::orderBy('lname','asc')->get() );
 
     }
 

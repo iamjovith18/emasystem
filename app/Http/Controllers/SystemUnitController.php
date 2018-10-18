@@ -141,7 +141,7 @@ class SystemUnitController extends Controller
 
         $units  = System_Unit::find($id);
        
-        return view('admin.inventorymanagement.system-units.checkout')->with('units',$units)->with('usernames',Usercred::all());
+        return view('admin.inventorymanagement.system-units.checkout')->with('units',$units)->with('usernames',Usercred::orderBy('lname','asc')->get() );
 
     }
     public function order(Request $request, $id){

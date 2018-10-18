@@ -99,16 +99,24 @@
                     <tbody>
                             <thead>
                                 <tr>
-                                    <th>Components Name</th>
+                                    <th>Brand Name</th>
+                                    <th>Model Name</th>
+                                    <th>Serial No.</th>
+                                    <th>Asset Tag</th>
+                                    <th>Category</th>
                                     <th>Date Issued</th>
                                 </tr>
                             </thead>
                                 <tr>
-                                @if($component_users!=null)
-                                    @foreach($component_users as $cu)
+                                @if($system_users!=null)
+                                    @foreach($system_users as $su)
                                         <tr>
-                                            <td> {{$cu->component->component_name}} </td>
-                                            <td>{{date('F j,Y',strtotime($cu->created_at))}}</td>
+                                            <td> {{$su->system_unit->brand->brand}} </td>
+                                            <td> {{$su->system_unit->model}} </td>
+                                            <td> {{$su->system_unit->serial_no}}</td>
+                                            <td> {{$su->system_unit->asset_tag}}</td>
+                                            <td> {{$su->system_unit->category->category_name}}</td>
+                                            <td>{{date('F j,Y',strtotime($su->created_at))}}</td>
                                         </tr>
                                     @endforeach
                                 @endif

@@ -29,6 +29,7 @@
                   <th>Total</th>
                   <th>Available</th>
                   <th>Created Date</th>
+                  <th>Issued To</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -45,6 +46,7 @@
                             <td>{{$accessory->quantity}}</td>
                             <td>{{$accessory->quantity - $accessory->order_qty}}</td>                  
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
+                            <td>test</td>
                             <td>
                               @if($accessory->quantity - $accessory->order_qty <= 0 )
                               <a>No Available |</a>
@@ -67,6 +69,7 @@
           </div>
         </div>
         </div>
+        
 </div>
 
 @endsection

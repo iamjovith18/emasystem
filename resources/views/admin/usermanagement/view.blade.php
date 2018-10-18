@@ -20,8 +20,7 @@
               <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
+                  <th>Fullname</th>
                   <th>Job Title</th>
                   <th>Email Address</th>
                   <th>Username</th>
@@ -39,8 +38,7 @@
                     @foreach($usercredentials as $usercredential)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{$usercredential->fname}}</td>
-                            <td>{{$usercredential->lname}}</td>
+                            <td>{{$usercredential->lname.', '.$usercredential->fname}}</td>
                             <td>{{$usercredential->job_title}}</td>
                             <td>{{$usercredential->email_add}}</td>
                             <td>{{$usercredential->username}}</td>

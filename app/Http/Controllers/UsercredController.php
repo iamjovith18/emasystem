@@ -21,7 +21,7 @@ class UsercredController extends Controller
      */
     public function index()
     {
-        $usercredentials = Usercred::all();
+        $usercredentials = Usercred::orderBy('lname','asc')->get();
         return view('admin.usermanagement.view')->with('usercredentials',$usercredentials);
     }
 

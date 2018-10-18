@@ -160,7 +160,7 @@ class ComponentController extends Controller
 
         $component  = Component::find($id);
        
-        return view('admin.inventorymanagement.component.checkout')->with('component',$component)->with('usernames',Usercred::all());
+        return view('admin.inventorymanagement.component.checkout')->with('component',$component)->with('usernames',Usercred::orderBy('lname','asc')->get() );
 
     }
     public function order(Request $request, $id){

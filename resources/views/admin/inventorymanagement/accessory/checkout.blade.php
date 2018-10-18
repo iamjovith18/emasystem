@@ -33,8 +33,8 @@
                 <label class="control-label">Employee Name</label>
                 <div class="controls">
                     <select name="username_id" required >
-                        @foreach($usernames as $username)
-                            <option value="{{$username->id}}">{{strtoupper($username->username)}}</option>
+                        @foreach($usernames as $u)
+                            <option value="{{$u->id}}">{{strtoupper($u->lname . ', '. $u->fname)}}</option>
                         @endforeach
                     </select>      
                 </div>
