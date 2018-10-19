@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Usercred;
 use App\Accessory;
 use App\Component;
+use App\System_Unit;
 
 class HomeController extends Controller
 {
@@ -31,18 +32,52 @@ class HomeController extends Controller
         
 
         /* total headset */
-        $total_quantity = Accessory::where('category_id','=',3)->count('quantity');
-        $total_order_qty = Accessory::where('category_id','=',3)->where('order_qty','!=',0)->count('order_qty');
-        $total_headsets = $total_quantity - $total_order_qty;
+        $total_qty = Accessory::where('category_id','=',3)->sum('quantity');
+        $total_o_qty = Accessory::where('category_id','=',3)->sum('order_qty');
+        $total_headsets = $total_qty - $total_o_qty;
         /* end total headset */
         
         
         
-        $total_hdd = Component::where('category_id','=',5)->count();
+        /* total keyboard */
+        $total_qty = Accessory::where('category_id','=',4)->sum('quantity');
+        $total_o_qty = Accessory::where('category_id','=',4)->sum('order_qty');
+        $total_kb = $total_qty - $total_o_qty;
+        /* end total keyboard */
+
+        /* total mouse */
+        $total_qty = Accessory::where('category_id','=',2)->sum('quantity');
+        $total_o_qty = Accessory::where('category_id','=',2)->sum('order_qty');
+        $total_m = $total_qty - $total_o_qty;
+        /* end total mouse */
+
+        /* total hdd */
+        $total_qty = component::where('category_id','=',5)->sum('total');
+        $total_o_qty = component::where('category_id','=',5)->sum('order_qty');
+        $total_hdd = $total_qty - $total_o_qty;
+        /* end total hdd */
+
+        /* total monitor */
+        $total_qty = system_unit::where('category_id','=',8)->sum('total');
+        $total_o_qty = system_unit::where('category_id','=',8)->sum('order_qty');
+        $total_monitor = $total_qty - $total_o_qty;
+        /* end total monitor */
+        
+        /* total cpu */
+        $total_qty = system_unit::where('category_id','=',11)->sum('total');
+        $total_o_qty = system_unit::where('category_id','=',11)->sum('order_qty');
+        $total_cpu = $total_qty - $total_o_qty;
+        /* end total cpu */
+
+
 
         return view('home')->with('total_users',$total_users)
                            ->with('total_headsets',$total_headsets)
                            ->with('total_hdd',$total_hdd)
-                           ->with('total_order_qty',$total_order_qty);
+                           ->with('total_kb',$total_kb)
+                           ->with('total_m',$total_m)
+                           ->with('total_monitor',$total_monitor)
+                           ->with('total_cpu',$total_cpu)
+                           ->with('total_qty',$total_qty);
     }
 }
