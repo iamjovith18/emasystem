@@ -47,12 +47,12 @@
                             <td>{{$su->updated_at}}</td>
                             <td>
                               @if($su->total - $su->order_qty < 1)
-                              <a>No Available |</a>
+                              <a title="No Available" class="btn btn-danger" disabled><i class="icon-shopping-cart"></i></a>
                               @else
-                              <a href="{{route('system-unit.checkout',['id'=>$su->id])}}" class="btn-btn-warning">Checkout |</a>
+                              <a title="Checkout" href="{{route('system-unit.checkout',['id'=>$su->id])}}" class="btn btn-primary btn-sm"><i class="icon-shopping-cart"></i></a>
                               @endif
-                              <a href="{{route('system-unit.edit',['id'=>$su->id])}}" class="btn-btn-warning">Edit</a> |
-                              <a href="{{route('system-unit.delete',['id'=>$su->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" >Delete</a>
+                              <a title="Edit" href="{{route('system-unit.edit',['id'=>$su->id])}}" class="btn btn-warning btn-sm"><i class="icon-edit"></i></a>
+                              <a title="Delete" href="{{route('system-unit.delete',['id'=>$su->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

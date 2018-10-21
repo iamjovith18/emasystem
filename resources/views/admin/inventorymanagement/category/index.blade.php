@@ -34,8 +34,8 @@
                             <td>{{$category->type}}</td>
                             <td>{{$category->created_at}}</td>
                             <td>
-                            <a href="{{route('category.edit',['id'=>$category->id])}}" class="btn-btn-warning">Edit</a> |
-                            <a href="{{route('category.delete',['id'=>$category->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure do you want to delete this category?')" >Delete</a>
+                            <a title="Edit" href="{{route('category.edit',['id'=>$category->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
+                            <a title="Delete" href="{{route('category.delete',['id'=>$category->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure do you want to delete this category?')" ><i class="icon-edit"></i></a>
 
                             </td>
                         </tr>

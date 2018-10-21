@@ -45,12 +45,12 @@
                             <td>{{$component->updated_at}}</td>
                             <td>
                               @if($component->total - $component->order_qty < 1)
-                              <a>No Available |</a>
+                              <a title="No Available" class="btn btn-danger" disabled><i class="icon-shopping-cart"></i></a>
                               @else
-                              <a href="{{route('component.checkout',['id'=>$component->id])}}" class="btn-btn-warning">Checkout |</a>
+                              <a title="Checkout" href="{{route('component.checkout',['id'=>$component->id])}}" class="btn btn-primary"><i class="icon-shopping-cart"></i></a>
                               @endif
-                              <a href="{{route('component.edit',['id'=>$component->id])}}" class="btn-btn-warning">Edit</a> |
-                              <a href="{{route('component.delete',['id'=>$component->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" >Delete</a>
+                              <a title="Edit" href="{{route('component.edit',['id'=>$component->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
+                              <a title="Delete" href="{{route('component.delete',['id'=>$component->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

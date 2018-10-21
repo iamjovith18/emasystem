@@ -32,8 +32,8 @@
                             <td>{{$brand->brand}}</td>
                             <td>{{$brand->created_at}}</td>
                             <td>
-                            <a href="{{route('brand.edit',['id'=>$brand->id])}}" class="btn-btn-warning">Edit</a> |
-                            <a href="{{route('brand.delete',['id'=>$brand->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure do you want to delete this user?')" >Delete</a>
+                            <a title="Edit" href="{{route('brand.edit',['id'=>$brand->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
+                            <a title="Delete" href="{{route('brand.delete',['id'=>$brand->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure do you want to delete this user?')" ><i class="icon-trash"></i></a>
 
                             </td>
                         </tr>

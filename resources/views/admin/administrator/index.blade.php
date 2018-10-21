@@ -23,7 +23,6 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>Created Date</th>
-                  <th>Permission</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -34,11 +33,9 @@
                             <td>{{$u->name}}</td>
                             <td>{{$u->email}}</td>
                             <td>{{$u->created_at}}</td>
-                            <td>admin</td>
                             <td>
-                            <a href="{{route('administrator.edit',['id'=>$u->id])}}" class="btn-btn-warning">Edit</a> |
-                            <a href="{{route('administrator.delete',['id'=>$u->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure do you want to delete this category?')" >Delete</a>
-
+                              <a title="Edit" href="{{route('administrator.edit',['id'=>$u->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
+                              <a title="Delete" href="{{route('administrator.delete',['id'=>$u->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure do you want to delete this category?')" ><i class="icon-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

@@ -29,7 +29,6 @@
                   <th>Total</th>
                   <th>Available</th>
                   <th>Created Date</th>
-                  <th>Issued To</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -46,15 +45,14 @@
                             <td>{{$accessory->quantity}}</td>
                             <td>{{$accessory->quantity - $accessory->order_qty}}</td>                  
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
-                            <td>test</td>
                             <td>
                               @if($accessory->quantity - $accessory->order_qty <= 0 )
-                              <a>No Available |</a>
+                              <a title="No Available" class="btn btn-danger" disabled><i class="icon-shopping-cart"></i></a>
                               @else
-                              <a href="{{route('accessory.checkout',['id'=>$accessory->id])}}" class="btn-btn-warning">Checkout |</a>
+                              <a title="Checkout" href="{{route('accessory.checkout',['id'=>$accessory->id])}}" class="btn btn-primary"><i class="icon-shopping-cart"></i></a>
                               @endif
-                              <a href="{{route('accessory.edit',['id'=>$accessory->id])}}" class="btn-btn-warning">Edit</a> |
-                              <a href="{{route('accessory.delete',['id'=>$accessory->id])}}" class="btn-btn-warning" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" >Delete</a>
+                              <a title="Edit" href="{{route('accessory.edit',['id'=>$accessory->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a> 
+                              <a title="Delete" href="{{route('accessory.delete',['id'=>$accessory->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
