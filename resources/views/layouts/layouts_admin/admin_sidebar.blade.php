@@ -17,6 +17,7 @@
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Settings</span></a>
       <ul>
+        <li><a href="{{route('administrator')}}">Administrator</a></li>
         <li><a href="{{route('brand')}}">Brands</a></li>
         <li><a href="{{route('category')}}">Categories</a></li>
       </ul>

@@ -12,7 +12,8 @@
 
     </head>
     <body>
-        <div id="loginbox">            
+        <div id="loginbox">
+
             <form id="loginform" method="POST" class="form-vertical" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                 @csrf
 				 <div class="control-group normal_text"> <h3><img src="{{asset('images/backend_images/logo.png')}}" alt="Logo" /></h3></div>
@@ -24,7 +25,7 @@
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                            </span>            
                          @endif
                     </div>
                 </div>
@@ -33,10 +34,10 @@
                         <div class="main_input_box">
                             <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" />
                         </div>
-                        @if ($errors->has('password'))
+                        @if ($errors->has('password'))                
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                            </span>                  
                         @endif
                     </div>
                 </div>

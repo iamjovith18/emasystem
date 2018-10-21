@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2018 at 01:13 PM
+-- Generation Time: Oct 19, 2018 at 01:17 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -48,9 +48,16 @@ CREATE TABLE `accessories` (
 --
 
 INSERT INTO `accessories` (`id`, `accessory_name`, `category_id`, `brand_id`, `model_no`, `serial_no`, `batch_no`, `quantity`, `min_qty`, `order_qty`, `created_at`, `updated_at`) VALUES
-(1, 'plantonix', 3, 4, 'fefe4334', '2005', 'test', '1', '1', 1, '2018-10-03 21:48:51', '2018-10-15 21:29:39'),
-(2, 'plantonix', 3, 4, 'fefe', 'fefe', NULL, '1', '1', 1, '2018-10-11 22:33:15', '2018-10-15 21:51:34'),
-(3, 'Dell keyboard', 4, 1, 'keyboard', 'fkejfekkfj', NULL, '20', NULL, 2, '2018-10-16 21:14:18', '2018-10-16 21:17:20');
+(4, 'plantonix headset', 3, 5, 'plantatonix', 'dww', 'batch 01', '1', NULL, 1, '2018-10-17 22:24:26', '2018-10-17 22:39:36'),
+(5, 'Genuis Keyboard', 4, 9, 'keyboard1558', '2f2e558', '21f568', '50', NULL, 6, '2018-10-17 22:56:36', '2018-10-19 00:21:58'),
+(6, 'plantonix', 3, 5, 'headset 2', 'headset002', 'batch 01', '10', NULL, 5, '2018-10-18 00:43:08', '2018-10-19 02:22:53'),
+(7, 'ee', 3, 4, 'fefe', 'fefe', 'feef', '1', NULL, 1, '2018-10-18 01:00:38', '2018-10-18 19:58:26'),
+(8, 'plantonix', 3, 9, 'eee', 'efefe', 'efefe', '1', NULL, 0, '2018-10-18 01:00:56', '2018-10-18 01:00:56'),
+(9, 'headset new', 3, 4, 'fefe4334', '225884', 'batch 01', '1', NULL, 0, '2018-10-18 02:48:47', '2018-10-18 02:48:47'),
+(10, 'plantonix2005', 3, 5, 'fefefe', 'ffefe', 'feef', '10', NULL, 0, '2018-10-18 02:49:15', '2018-10-19 02:23:55'),
+(11, 'Dell keyboard', 4, 1, 'efefefe', 'fefefe', 'batch 02', '20', NULL, 0, '2018-10-19 00:12:18', '2018-10-19 00:12:18'),
+(12, 'dell mouse', 2, 1, 'none', 'none', 'batch 01', '5', NULL, 0, '2018-10-19 00:40:29', '2018-10-19 00:40:29'),
+(13, 'a4tech mouse', 2, 4, 'none', 'none', 'batch 02', '3', NULL, 0, '2018-10-19 00:41:12', '2018-10-19 00:41:12');
 
 -- --------------------------------------------------------
 
@@ -71,20 +78,11 @@ CREATE TABLE `accessory__users` (
 --
 
 INSERT INTO `accessory__users` (`id`, `accessory_id`, `username_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 13, '2018-10-15 03:06:33', '2018-10-15 03:06:33'),
-(2, 1, 13, '2018-10-15 19:59:27', '2018-10-15 19:59:27'),
-(3, 1, 13, '2018-10-15 20:03:50', '2018-10-15 20:03:50'),
-(4, 1, 13, '2018-10-15 20:05:10', '2018-10-15 20:05:10'),
-(5, 1, 13, '2018-10-15 20:07:03', '2018-10-15 20:07:03'),
-(6, 1, 13, '2018-10-15 21:23:05', '2018-10-15 21:23:05'),
-(7, 1, 22, '2018-10-15 21:24:38', '2018-10-15 21:24:38'),
-(8, 2, 29, '2018-10-15 21:25:08', '2018-10-15 21:25:08'),
-(9, 2, 29, '2018-10-15 21:25:08', '2018-10-15 21:25:08'),
-(10, 2, 13, '2018-10-15 21:25:23', '2018-10-15 21:25:23'),
-(11, 1, 13, '2018-10-15 21:29:39', '2018-10-15 21:29:39'),
-(12, 2, 13, '2018-10-15 21:51:34', '2018-10-15 21:51:34'),
-(13, 3, 13, '2018-10-16 21:14:29', '2018-10-16 21:14:29'),
-(14, 3, 16, '2018-10-16 21:17:20', '2018-10-16 21:17:20');
+(15, 4, 14, '2018-10-17 22:39:36', '2018-10-17 22:39:36'),
+(16, 5, 14, '2018-10-17 23:00:29', '2018-10-17 23:00:29'),
+(17, 7, 14, '2018-10-18 02:44:54', '2018-10-18 02:44:54'),
+(18, 5, 14, '2018-10-19 00:21:58', '2018-10-19 00:21:58'),
+(19, 6, 14, '2018-10-19 02:22:53', '2018-10-19 02:22:53');
 
 -- --------------------------------------------------------
 
@@ -169,9 +167,8 @@ CREATE TABLE `components` (
 --
 
 INSERT INTO `components` (`id`, `component_name`, `serial_no`, `category_id`, `brand_id`, `total`, `available`, `order_qty`, `created_at`, `updated_at`) VALUES
-(1, 'seagate 250gb', 'serialupdated', 5, 8, 100, NULL, 63, '2018-09-26 23:46:22', '2018-10-15 21:23:55'),
-(2, 'ssd 120', 'serialsamsung', 6, 6, 150, NULL, 101, '2018-10-03 00:55:18', '2018-10-15 21:45:29'),
-(3, 'kingston swyxeeee', '5558', 6, 10, 50, NULL, 3, '2018-10-16 19:31:12', '2018-10-17 01:13:14');
+(4, 'seagate 250gb', 'fefef343', 5, 8, 1, NULL, 1, '2018-10-17 23:19:30', '2018-10-17 23:27:52'),
+(5, 'seagate 250gb', NULL, 5, 7, 20, NULL, 0, '2018-10-19 02:17:21', '2018-10-19 02:17:21');
 
 -- --------------------------------------------------------
 
@@ -192,22 +189,7 @@ CREATE TABLE `component__users` (
 --
 
 INSERT INTO `component__users` (`id`, `component_id`, `username_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 13, '2018-10-03 00:51:34', '2018-10-03 00:51:34'),
-(2, 1, 13, '2018-10-03 00:51:45', '2018-10-03 00:51:45'),
-(3, 1, 24, '2018-10-03 00:52:29', '2018-10-03 00:52:29'),
-(4, 2, 18, '2018-10-03 00:55:33', '2018-10-03 00:55:33'),
-(5, 1, 15, '2018-10-03 01:03:18', '2018-10-03 01:03:18'),
-(6, 1, 14, '2018-10-03 01:17:41', '2018-10-03 01:17:41'),
-(7, 1, 13, '2018-10-03 01:17:50', '2018-10-03 01:17:50'),
-(8, 1, 46, '2018-10-04 02:48:53', '2018-10-04 02:48:53'),
-(9, 1, 17, '2018-10-04 19:54:31', '2018-10-04 19:54:31'),
-(10, 2, 31, '2018-10-09 18:51:56', '2018-10-09 18:51:56'),
-(11, 2, 13, '2018-10-09 18:53:17', '2018-10-09 18:53:17'),
-(12, 1, 13, '2018-10-12 00:30:37', '2018-10-12 00:30:37'),
-(13, 1, 13, '2018-10-15 21:23:39', '2018-10-15 21:23:39'),
-(14, 1, 13, '2018-10-15 21:23:55', '2018-10-15 21:23:55'),
-(15, 2, 13, '2018-10-15 21:45:29', '2018-10-15 21:45:29'),
-(16, 3, 13, '2018-10-16 19:31:30', '2018-10-16 19:31:30');
+(17, 4, 14, '2018-10-17 23:27:52', '2018-10-17 23:27:52');
 
 -- --------------------------------------------------------
 
@@ -276,8 +258,12 @@ CREATE TABLE `system__units` (
 
 INSERT INTO `system__units` (`id`, `brand_id`, `category_id`, `model`, `serial_no`, `asset_tag`, `total`, `order_qty`, `created_at`, `updated_at`) VALUES
 (1, 1, 11, 'test ste', 'fefefef', NULL, 1, 1, '2018-10-16 02:13:26', '2018-10-17 02:35:51'),
-(2, 1, 11, 'mode system unit update', 'serial update', 'asset update', 5, 1, '2018-10-16 02:20:07', '2018-10-17 02:35:17'),
-(3, 1, 8, 'monitor model', 'feeef', 'fefef', 1, 0, '2018-10-16 19:02:05', '2018-10-16 19:02:05');
+(2, 1, 11, 'mode system unit update', 'serial update', 'asset update', 5, 2, '2018-10-16 02:20:07', '2018-10-17 23:25:07'),
+(3, 1, 8, 'monitor model', 'feeef', 'fefef', 1, 0, '2018-10-16 19:02:05', '2018-10-16 19:02:05'),
+(4, 6, 8, 'samusng 12305', 'serialsiearl 558546', 'ab3bekei', 1, 1, '2018-10-17 19:24:58', '2018-10-17 19:25:49'),
+(5, 1, 8, 'model test', NULL, 'ekjfejf', 5, 0, '2018-10-19 02:39:17', '2018-10-19 02:39:17'),
+(6, 1, 11, 'system unit test', 'fefe', 'efefe', 1, 0, '2018-10-19 02:50:38', '2018-10-19 02:50:38'),
+(7, 2, 11, 'asus  system unit test', NULL, 'fefe', 1, 0, '2018-10-19 02:51:07', '2018-10-19 02:51:07');
 
 -- --------------------------------------------------------
 
@@ -298,9 +284,7 @@ CREATE TABLE `unit__users` (
 --
 
 INSERT INTO `unit__users` (`id`, `system_unit_id`, `username_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 13, '2018-10-17 02:34:01', '2018-10-17 02:34:01'),
-(2, 2, 13, '2018-10-17 02:35:17', '2018-10-17 02:35:17'),
-(3, 1, 13, '2018-10-17 02:35:51', '2018-10-17 02:35:51');
+(5, 2, 14, '2018-10-17 23:25:07', '2018-10-17 23:25:07');
 
 -- --------------------------------------------------------
 
@@ -335,11 +319,11 @@ INSERT INTO `usercreds` (`id`, `fname`, `lname`, `job_title`, `email_add`, `user
 (16, 'Jane Hanna', 'Caballero', 'Customer Care Specialist', 'Freya.Caballero@dreamscapenetworks.com', 'Freya.Caballero', 'ak0-:j]fc6(U', 'Customer Care', 'CCS Batch 63', 'tel:+61290372826;ext=423', 'active', '2018-09-10 23:51:45', '2018-09-10 23:51:45'),
 (17, 'Ella Sophiya', 'Cañaveral', 'Customer Care Specialist', 'Ella.Canaveral@dreamscapenetworks.com', 'Ella.Canaveral', 'B|x6M+t6]DV^', 'Customer Care', 'CCS Batch 63', 'tel:+61290372826;ext=424', 'active', '2018-09-10 23:53:13', '2018-09-10 23:53:13'),
 (18, 'Daveson', 'Cuizon', 'Customer Care Specialist', 'Dave.Cuizon@dreamscapenetworks.com', 'Dave.Cuizon', ')si8+Nn)G&X_', 'Customer Care', 'CCS Batch 63', 'tel:+61290372826;ext=425', 'active', '2018-09-10 23:54:28', '2018-09-27 21:04:56'),
-(19, 'Arielle Ariane', 'Nacar', 'Customer Care Specialist', 'Arielle.Nacar@dreamscapenetworks.com', 'Arielle.Nacar', 'u&DA#D}UFCfO', 'Customer Care', 'CCS Batch 63', 'tel:+61290372826;ext=426', 'active', '2018-09-10 23:56:09', '2018-09-17 19:07:29'),
+(19, 'Arielle Ariane', 'Nacar', 'Customer Care Specialist', 'Arielle.Nacar@dreamscapenetworks.com', 'Arielle.Nacar', 'u&DA#D}UFCfO', 'Customer Care', 'CCS Batch 63', 'tel:+61290372826;ext=426', 'Suspended', '2018-09-10 23:56:09', '2018-10-17 18:35:04'),
 (20, 'Gwyneth Claire', 'Felisilda', 'Content Writer', 'Gwen.felisilda@dreamscapenetworks.com', 'Gwen.felisilda', 'z%a>7Ro[M}Ot', 'Marketing', 'Content Writer', NULL, 'active', '2018-09-17 00:01:08', '2018-09-18 19:18:36'),
 (21, 'Arrah Camillia', 'Manticajon', 'Content Writer', 'Arrah.Manticajon@dreamscapenetworks.com', 'Arrah.Manticajon', '/9QZ54#G(dcs', 'Marketing', 'Content Writer', NULL, 'active', '2018-09-17 00:05:45', '2018-09-18 19:18:03'),
 (22, 'Carl Christian', 'Torres', 'Logo Designer', 'Carl.Torres@crazydomains.com', 'Carl.Torres', 'l!{P%-mLHi$;', 'Developer', 'Logo Designer', NULL, 'active', '2018-09-17 00:08:07', '2018-09-17 17:50:43'),
-(23, 'Ricmer', 'Transmonte', 'Customer Care Specialist', 'Mic.Trasmonte@crazydomains.com', 'Mic.Trasmonte', '.]M+H6raYl+G', 'Customer Care', 'CCS Batch 64', 'tel:+61290372826;ext=435', 'active', '2018-09-17 00:10:15', '2018-09-20 21:50:43'),
+(23, 'Ricmer', 'Transmonte', 'Customer Care Specialist', 'Mic.Trasmonte@crazydomains.com', 'Mic.Trasmonte', '.]M+H6raYl+G', 'Customer Care', 'CCS Batch 64', 'tel:+61290372826;ext=435', 'Active', '2018-09-17 00:10:15', '2018-10-17 19:06:01'),
 (24, 'Karen Marie', 'Salazar', 'Customer Care Specialist', 'Karie.Salazar@crazydomains.com', 'Karie.Salazar', 'yQBTu4zH&C%h', 'Customer Care', 'CCS Batch 64', 'tel:+61290372826;ext=431', 'active', '2018-09-17 00:11:37', '2018-09-20 21:51:14'),
 (25, 'Mara Trisha', 'Ramas', 'Customer Care Specialist', 'Trish.Ramas@crazydomains.com', 'Trish.Ramas', '/Y=SAV#EDGX4', 'Customer Care', 'CCS Batch 64', 'tel:+61290372826;ext=432', 'active', '2018-09-17 00:13:55', '2018-09-17 19:09:26'),
 (26, 'Genesa', 'Milan', 'Customer Care Specialist', 'Nessa.Milan@crazydomains.com', 'Nessa.Milan', ')7iM:8b#%MD4', 'Customer Care', 'CCS Batch 64', 'tel:+61290372826;ext=430', 'active', '2018-09-17 00:15:31', '2018-09-20 21:52:07'),
@@ -353,7 +337,7 @@ INSERT INTO `usercreds` (`id`, `fname`, `lname`, `job_title`, `email_add`, `user
 (34, 'Jewel Jane', 'Garong', 'Business Development Specialist', 'Jewel.Garong@dreamscapenetworks.com', 'Jewel.Garong', 'bry.uC_6x41g', 'Sales', 'BDS Batch 28', 'tel:+61892618206;ext=206', 'active', '2018-09-27 20:59:06', '2018-10-02 02:55:16'),
 (35, 'JereicaAiko', 'Espinosa', 'Business Development Specialist', 'Aiko.Espinosa@dreamscapenetworks.com', 'Aiko.Espinosa', 'N2Bf@yP!hlO*', 'Sales', 'BDS Batch 28', 'tel:+61892618209;ext=209', 'active', '2018-09-27 21:00:24', '2018-10-02 02:56:02'),
 (36, 'MaryRosette', 'Dela Peña', 'Business Development Specialist', 'Ross.DelaPena@dreamscapenetworks.com', 'Ross.DelaPena', 'pw[I[lF?%?Jn', 'Sales', 'BDS Batch 28', 'tel:+61892618212;ext=212', 'active', '2018-09-27 21:01:57', '2018-10-02 02:56:32'),
-(37, 'Eduardo Antonio', 'Cahoy', 'Business Development Specialist', 'Eddie.Cahoy@dreamscapenetworks.com', 'Eddie.Cahoy', 'pw[I[lF?%?Jn', 'Sales', 'BDS Batch 28', 'tel:+61892618218;ext=218', 'active', '2018-09-27 21:03:11', '2018-10-02 02:57:11'),
+(37, 'Eduardo Antonio', 'Cahoy', 'Business Development Specialist', 'Eddie.Cahoy@dreamscapenetworks.com', 'Eddie.Cahoy', 'pw[I[lF?%?Jn', 'Sales', 'BDS Batch 28', 'tel:+61892618218;ext=218', 'Suspended', '2018-09-27 21:03:11', '2018-10-17 18:35:23'),
 (38, 'Timmy Gie', 'Atillo', 'Business Development Specialist', 'Timmy.Atillo@crazydomains.com', 'Timmy.Atillo', 'Dream1234!', 'Sales', 'BDS Batch 29', 'tel:+61282796137;ext=137', 'active', '2018-10-01 23:52:47', '2018-10-02 00:22:52'),
 (39, 'Gabe-Ann', 'Baynosa', 'Business Development Specialist', 'Gab.Baynosa@crazydomains.com', 'Gab.Baynosa', 'Dream1234!', 'Sales', 'BDS Batch 29', 'tel:+61282796141;ext=141', 'active', '2018-10-01 23:54:06', '2018-10-02 00:23:41'),
 (40, 'Ivy', 'Billings', 'Business Development Specialist', 'Trixie.Billings@crazydomains.com', 'Trixie.Billings', 'Dream1234!', 'Sales', 'BDS Batch 29', 'tel:+61282796143;ext=143', 'active', '2018-10-01 23:55:51', '2018-10-03 18:50:48'),
@@ -384,7 +368,8 @@ INSERT INTO `usercreds` (`id`, `fname`, `lname`, `job_title`, `email_add`, `user
 (65, 'Zoldy', 'Sugarol', 'Customer Care Specialist', 'Zee.Sugarol@dreamscapenetworks.com', 'Zee.Sugarol', '2hs#XRB-@vi7', 'Customer Care', 'CCS Batch 65 - Vodien', 'tel:+61290372826;ext=448', 'active', '2018-10-14 19:00:22', '2018-10-14 20:30:08'),
 (66, 'Alnie', 'Pardinan', 'Customer Care Specialist', 'Alnie.Pardinan@dreamscapenetworks.com', 'Alnie.Pardinan', '(xoEB0_K}(&K', 'Customer Care', 'CCS Batch 65 - Vodien', 'tel:+61290372826;ext=449', 'active', '2018-10-14 19:01:53', '2018-10-14 20:30:30'),
 (67, 'Leslie Anne Maye', 'Zayas', 'Customer Care Specialist', 'Yanmei.Zayas@crazydomains.com', 'Yanmei.Zayas', 'qmTd8OL*I77{', 'Customer Care', 'CCS Batch 65 - Vodien', 'tel:+61290372826;ext=450', 'active', '2018-10-14 19:06:23', '2018-10-14 20:30:46'),
-(68, 'VincentJoseph', 'Sabello', 'Corporate Account Manager', 'Vaughn.Sabello@crazydomains.com', 'Vaughn.Sabello', ')QfU@O4KrmZF', 'Reseller', NULL, 'tel:+61290372826;ext=451', 'active', '2018-10-15 23:13:11', '2018-10-15 23:21:59');
+(68, 'VincentJoseph', 'Sabello', 'Corporate Account Manager', 'Vaughn.Sabello@crazydomains.com', 'Vaughn.Sabello', ')QfU@O4KrmZF', 'Reseller', NULL, 'tel:+61290372826;ext=451', 'active', '2018-10-15 23:13:11', '2018-10-15 23:21:59'),
+(69, 'Andrii', 'Movchan', 'Project Manager/Engineer', 'Andrii.Movchan@dreamscapenetworks.com', 'Andrii.Movchan', 'Ca3tPJW7Pz', 'Project Management', NULL, NULL, 'active', '2018-10-18 01:46:44', '2018-10-18 01:46:44');
 
 -- --------------------------------------------------------
 
@@ -407,7 +392,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'administrator@crazydomains.com', '$2y$10$A8npQzOAwp60zOQjIUfYV.ixffAxSw6pPZ3QFBxuqgTjuBYEtnBEm', NULL, '2018-09-26 23:39:37', '2018-09-26 23:39:37');
+(1, 'Super Admin', 'administrator@crazydomains.com', '$2y$10$A8npQzOAwp60zOQjIUfYV.ixffAxSw6pPZ3QFBxuqgTjuBYEtnBEm', 'PO1AFaWFLmWFzUshRP4eNWLPGKKScgsUYUsna8u6qYwzlkE9q9ANMcH9cNPu', '2018-09-26 23:39:37', '2018-09-26 23:39:37'),
+(2, 'Jay Rusiana', 'ojttwenty@dreamscapenetworks.com', '$2y$10$nbSGrKjY7uwp7HpC3XAxhexxJvW5BP8Pu7cvnpJaCp6NuKHCx6Uce', NULL, '2018-10-18 02:57:49', '2018-10-18 02:57:49');
 
 --
 -- Indexes for dumped tables
@@ -494,13 +480,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `accessories`
 --
 ALTER TABLE `accessories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `accessory__users`
 --
 ALTER TABLE `accessory__users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -518,13 +504,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `components`
 --
 ALTER TABLE `components`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `component__users`
 --
 ALTER TABLE `component__users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -536,25 +522,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `system__units`
 --
 ALTER TABLE `system__units`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `unit__users`
 --
 ALTER TABLE `unit__users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `usercreds`
 --
 ALTER TABLE `usercreds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

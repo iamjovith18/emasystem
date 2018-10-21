@@ -3,7 +3,7 @@
 @section('content')
 
 
-/* View All Brands*/
+/* View All Category*/
 
 <div id="content">
   <div id="content-header">

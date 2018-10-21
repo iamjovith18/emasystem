@@ -238,11 +238,38 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'system-unit.order'
     ]);
 
-    //Register admin
+    //ADMINISTRATOR/ USER
 
-    Route::get('/administration/create',[
-        'uses'=>'Auth\RegisterController@create',
-        'as'=>'register.create'
+    Route::get('/administrator',[
+        'uses'=>'AdministratorController@index',
+        'as'=>'administrator'
+    ]);
+
+    Route::get('/administrator',[
+        'uses'=>'AdministratorController@index',
+        'as'=>'administrator'
+    ]);
+
+    Route::get('/administrator/create',[
+        'uses'=>'AdministratorController@create',
+        'as'=>'administrator.create'
+    ]);
+    Route::post('/administrator/store',[
+        'uses'=>'AdministratorController@store',
+        'as'=>'administrator.store'
+    ]);
+
+    Route::get('/administrator/edit/{id}',[
+        'uses'=>'AdministratorController@edit',
+        'as'=>'administrator.edit'
+    ]);
+    Route::post('/administrator/update/{id}',[
+        'uses'=>'AdministratorController@update',
+        'as'=>'administrator.update'
+    ]);
+    Route::get('/administrator/delete/{id}',[
+        'uses'=>'AdministratorController@destroy',
+        'as'=>'administrator.delete'
     ]);
 
 
