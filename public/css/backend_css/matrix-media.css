@@ -1,9 +1,9 @@
 body {
-	background:#27a9e3;
+	background:#2E363F;
 }
 
 #header {
-	background-color: #27a9e3;
+	background-color: #1f262d;
    margin-top:10px;
 }
 #search input[type=text], #search button {
@@ -14,10 +14,10 @@ body {
 }
 #sidebar > ul{border-bottom: 1px solid #37414b}
 #sidebar > ul > li {
-	border-top: 1px solid #fff; border-bottom: 1px solid #27a9e3;
+	border-top: 1px solid #37414b; border-bottom: 1px solid #1f262d;
 }
 #sidebar > ul > li.active {
-    background-color: #3abdef; border-bottom: 1px solid #27a9e3;  border-top: 1px solid #27a9e3;
+    background-color: #27a9e3; border-bottom: 1px solid #27a9e3;  border-top: 1px solid #27a9e3;
 }
 #sidebar > ul > li.active a{ color:#fff; text-decoration:none;}
 
@@ -28,12 +28,12 @@ body {
 	background-color: #27a9e3; color:#fff;
 }
 #sidebar > ul li ul {
-	background-color: #27a9e3;
+	background-color: #1e242b;
 }
-#sidebar > ul li ul li a{ color:#fff}
+#sidebar > ul li ul li a{ color:#939da8}
 #sidebar > ul li ul li a:hover, #sidebar > ul li ul li.active a {
 	color: #fff;
-	background-color: #3abdef;
+	background-color: #28b779;
 }
 
 

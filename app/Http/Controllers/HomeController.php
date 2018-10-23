@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usercred;
-use App\Accessory;
+use App\accessory;
 use App\Component;
 use App\System_Unit;
 
@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $total_users = Usercred::count();
+        $total_users = Usercred::where('status','=','active')->count('id');
         
 
         /* total headset */

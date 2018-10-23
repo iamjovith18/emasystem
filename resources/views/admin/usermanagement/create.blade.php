@@ -75,6 +75,7 @@
                     <option value="Designer">Designer</option>
                     <option value="Developer">Developer</option>
                     <option value="Domain Group">Domain Group</option>
+                    <option value="Finance">Finance</option>
                     <option value="HR">HR</option>
                     <option value="Marketing">Marketing</option>
                     <option value="Quality Assurance">Quality Assurance</option>

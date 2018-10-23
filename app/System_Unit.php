@@ -11,7 +11,7 @@ class System_Unit extends Model
     ];
 
     public function brand(){
-        return $this->belongsTo('App\brand');
+        return $this->belongsTo('App\Brand');
     }
 
     public function category(){
