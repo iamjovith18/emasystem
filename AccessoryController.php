@@ -22,6 +22,7 @@ class AccessoryController extends Controller
         $categories = Category::orderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
         $accessories = accessory::orderBy('accessory_name','ASC')->get();
+
         return view('admin.inventorymanagement.accessory.index')
                 ->with('accessories',$accessories)
                 ->with('categories',$categories)

@@ -4,7 +4,7 @@
 @section('content')
 
 
-/* View All Employee */
+/* View  Employee Assets */
 
 
 <div id="content">

@@ -19,13 +19,17 @@ class AccessoryController extends Controller
     public function index()
     {
         
-        $categories = Category::orderBy('category_name','ASC')->get();
+        
+        $categories = Category::where('type','Accessory')->orderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
         $accessories = accessory::orderBy('accessory_name','ASC')->get();
+
+
         return view('admin.inventorymanagement.accessory.index')
-                ->with('accessories',$accessories)
-                ->with('categories',$categories)
-                ->with('brands',$brands);
+                ->with('accessories',accessory::orderBy('accessory_name','ASC')->get())
+                ->with('headsets',accessory::where('category_id',3)->orderBy('accessory_name','ASC')->get())
+                ->with('categories',Category::where('type','Accessory')->orderBy('category_name','ASC')->get())
+                ->with('brands',Brand::orderBy('brand','ASC')->get());
     }
 
     /**
