@@ -13,9 +13,20 @@
   <div class="container-fluid"><hr>
   <a href="{{route('system-unit.create')}}" class="btn btn-primary ">Create</a>
   <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>List of Units</h5>
-          </div>
+            <div class="widget-title">
+              <ul class="nav nav-tabs">
+                @foreach($categories as $count => $cat)
+                <li @if($count == 0) class="active" @endif ><a data-toggle="tab" href="#tab-{{$cat->id}}">{{strtoupper($cat->category_name)}}</a></li>
+                @endforeach
+              </ul>
+            </div>
+            <div class="widget-content tab-content">
+              @foreach($categories as $count => $cat)
+              <div @if($count==0) class="tab-pane active" @else class="tab-pane" @endif id="tab-{{$cat->id}}">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                  <h5>List of {{strtoupper($cat->category_name)}}</h5>
+                </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
@@ -33,8 +44,7 @@
                 </tr>
               </thead>
               <tbody>
-              @if(count($system_units)>0)
-                    @foreach($system_units as $su)
+                    @foreach($cat->system_unit as $su)
                         <tr>
                             <td>{{strtoupper($su->brand->brand)}}</td>
                             <td>{{strtoupper($su->category->category_name)}}</td>
@@ -56,17 +66,16 @@
                             </td>
                         </tr>
                     @endforeach
-                @else
-                        <tr>
-                            <td class="text-center" colspan="12">No data found!!!</td>   
-                        </tr>
-                @endif
                 </tr>      
               </tbody>
             </table>
-          </div>
-        </div>
-        </div>
-</div>
+            </div>
+            </div>
+            </div>
+            @endforeach
+            </div>
+            </div>
+            </div>
+            </div>
 
 @endsection

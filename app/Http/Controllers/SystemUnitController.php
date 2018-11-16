@@ -18,8 +18,11 @@ class SystemUnitController extends Controller
      */
     public function index()
     {
+        $categories = Category::where('type','Asset')->orderBy('category_name','ASC')->get();
         $system_units=System_Unit::all();
-        return view('admin.inventorymanagement.system-units.index')->with('system_units',$system_units);
+        return view('admin.inventorymanagement.system-units.index')->with('system_units',$system_units)
+                                                                   ->with('categories',Category::where('type','Asset')->orderBy('category_name','ASC')->get())
+                                                                   ->with('brands',Brand::orderBy('brand','ASC')->get());
     }
 
     /**
@@ -132,9 +135,16 @@ class SystemUnitController extends Controller
      * @param  \App\System_Unit  $system_Unit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(System_Unit $system_Unit)
+    public function destroy(System_Unit $system_Unit, $id)
     {
-        //
+        $system_unit = System_Unit::find($id);
+        
+        $system_unit->delete();
+        $notification = array(
+            'message' => 'Asset has been successfully deleted.', 
+            'alert-type' => 'error'
+        );
+        return redirect()->route('system-unit')->with($notification);
     }
 
     public function checkout($id){

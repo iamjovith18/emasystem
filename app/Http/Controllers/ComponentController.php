@@ -18,7 +18,7 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('category_name','ASC')->get();
+        $categories = Category::where('type','Component')->orderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
         $components= Component::all();     
         return view('admin.inventorymanagement.component.index')
