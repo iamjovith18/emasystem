@@ -31,7 +31,7 @@
                   <table class="table table-bordered data-table" id="accessory">
                     <thead>
                       <tr>
-                        <th>Accessory Name</th>
+                        <th>Component Name</th>
                         <th>Category Name</th>
                         <th>Brand Name</th>
                         <th>Model Name</th>

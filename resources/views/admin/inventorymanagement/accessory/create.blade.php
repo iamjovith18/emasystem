@@ -21,6 +21,16 @@
           <form class="form-horizontal" method="post" action="{{route('accessory.store')}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
             {{csrf_field()}}
             <div class="control-group">
+                <label class="control-label">Brand Name</label>
+                <div class="controls">
+                    <select name="brand_id" required>
+                        @foreach($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->brand}}</option>
+                        @endforeach
+                    </select> 
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label">Accessory Name</label>
                 <div class="controls">
                   <input type="text" autofocus class="span6" name="accessory_name" value="{{ old('accessory_name') }}" id="required">
@@ -37,16 +47,6 @@
                 </div>
             </div>
             
-            <div class="control-group">
-                <label class="control-label">Brand Name</label>
-                <div class="controls">
-                    <select name="brand_id" required>
-                        @foreach($brands as $brand)
-                            <option value="{{$brand->id}}">{{$brand->brand}}</option>
-                        @endforeach
-                    </select> 
-                </div>
-            </div>
             <div class="control-group">
                 <label class="control-label">Model No.</label>
                 <div class="controls">

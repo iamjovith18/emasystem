@@ -7,6 +7,7 @@ use App\Usercred;
 use App\accessory;
 use App\Component;
 use App\System_Unit;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -98,6 +99,9 @@ class HomeController extends Controller
         /* end total cpu */
 
 
+        
+
+
 
         return view('home')->with('total_users',$total_users)
                            ->with('total_headsets',$total_headsets)
@@ -110,6 +114,9 @@ class HomeController extends Controller
 						   ->with('total_hdmi',$total_hdmi)
                            ->with('total_monitor',$total_monitor)
                            ->with('total_cpu',$total_cpu)
-                           ->with('total_qty',$total_qty);
+                           ->with('total_qty',$total_qty)
+                           
+                           ->with('cat_accessory', Category::where('type','Accessory')->orderby('category_name','asc')->get())
+                           ->with('accessories',accessory::all()->sum('quantity'));
     }
 }

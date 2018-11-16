@@ -33,9 +33,8 @@
             <table class="table table-bordered data-table" id="accessory">
               <thead>
                 <tr>
-                  <th>Accessory Name</th>
-                  <th>Category Name</th>
                   <th>Brand Name</th>
+                  <th>Category Name</th>
                   <th>Model Name</th>
                   <th>Serial No.</th>
                   <th>Batch No.</th>
@@ -49,9 +48,8 @@
              
                     @foreach($cat->accessory as $accessory)
                         <tr>
-                            <td>{{strtoupper($accessory->accessory_name)}}</td>
-                            <td>{{strtoupper($accessory->category->category_name)}}</td>
                             <td>{{strtoupper($accessory->brand->brand)}}</td>
+                            <td>{{strtoupper($accessory->category->category_name)}}</td>
                             <td>{{strtoupper($accessory->model_no)}}</td>
                             <td>{{strtoupper($accessory->serial_no)}}</td>
                             <td>{{strtoupper($accessory->batch_no)}}</td>

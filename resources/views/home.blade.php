@@ -125,6 +125,29 @@
 <!--End-Chart-box-->
 
  
+<!--Dynamic Dashboard-->
+<div class="row-fluid">
+      <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5>Employee Management & Assets System Dashboard</h5>
+        </div>
+        <div class="widget-content" >
+          <div class="row-fluid">
+            <div class="span12">
+              <ul class="site-stats">
+                <a href="{{route('usermanagement')}}"><li class="bg_lb"></i> <strong>{{$total_users}}</strong> <strong><h5>Total Employees</h5></strong></li></a>
+                @foreach($cat_accessory as $cat)
+                <a href="{{route('usermanagement')}}"><li class="bg_lb">@foreach($cat->accessory as $accessory)<strong></strong> {{$accessory->quantity}} <strong>@endforeach <h5>Total Available {{$cat->category_name}}</h5></strong></li></a>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- End Dynamic Dashboard -->
+
+
     <hr/>
   </div>
 </div>
