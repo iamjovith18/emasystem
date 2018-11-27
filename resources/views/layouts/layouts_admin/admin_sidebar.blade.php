@@ -10,6 +10,7 @@
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-desktop"></i> <span>Asset Management</span></a>
       <ul>
+        <li><a href="{{route('all-deployed-assets')}}">All Deployed List</a></li>
         <li><a href="{{route('accessory')}}">Accessories</a></li>
         <li><a href="{{route('component')}}">Components</a></li>
         <li><a href="{{route('system-unit')}}">System Units</a></li>

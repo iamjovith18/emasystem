@@ -13,4 +13,7 @@ class Component_User extends Model
     public function component(){
         return $this->belongsTo('App\Component','component_id','id');
     }
+    public function users(){
+        return $this->belongsTo('App\Usercred','username_id','id');
+    }
 }

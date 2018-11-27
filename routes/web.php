@@ -121,6 +121,13 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'category.delete'
     ]);
 
+    // All deployed Assets
+
+    Route::get('/all-deployed-assets',[
+        'uses'=>'AllDeployedAssetsController@index',
+        'as'=>'all-deployed-assets'
+    ]);
+
     //Route for accessory
 
     Route::get('/accessory',[

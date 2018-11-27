@@ -54,7 +54,7 @@
                             <td>{{strtoupper($accessory->serial_no)}}</td>
                             <td>{{strtoupper($accessory->batch_no)}}</td>
                             <td>{{$accessory->quantity}}</td>
-                            <td>{{$accessory->quantity - $accessory->order_qty}}</td>                  
+                            <td>{{$accessory->quantity - $accessory->order_qty}}</td>                 
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
                             <td>
                               @if($accessory->quantity - $accessory->order_qty <= 0 )

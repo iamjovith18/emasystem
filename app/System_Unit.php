@@ -17,4 +17,15 @@ class System_Unit extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+
+    public function user(){
+        return $this->belongsTo('App\Usercred');
+    }
+
+    
+    public function unit_user(){
+        return $this->hasMany('App\Unit_User','id','system_unit_id');
+    }
+
+
 }

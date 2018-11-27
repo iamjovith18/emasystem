@@ -11,7 +11,7 @@
     <h1>View All Employees</h1>
   </div>
   <div class="container-fluid"><hr>
-  <div class="widget-box">
+  <div class="widget-box" style="overflow-x:auto;">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>List of Employees</h5>
           </div>

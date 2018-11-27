@@ -23,7 +23,7 @@ class Usercred extends Model
     }
 
     public function accessories(){
-        return $this->belongsToMany('App\Accessory');
+        return $this->belongsToMany('App\accessory');
     }
 
     public function system_user(){
