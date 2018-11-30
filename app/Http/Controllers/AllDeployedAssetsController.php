@@ -8,6 +8,8 @@ use App\Accessory_User;
 use App\Component_User;
 use App\System_Unit;
 use App\Category;
+use App\Unit_User;
+
 
 class AllDeployedAssetsController extends Controller
 {
@@ -20,7 +22,7 @@ class AllDeployedAssetsController extends Controller
     {
         $user_accessory = Accessory_User::all();
         $user_components = Component_User::all();
-        $user_system_units = System_Unit::all();
+        $user_system_units = Unit_User::all();
         $categories = Category::all();
         return view('admin.inventorymanagement.deployed-assets.index')
                     ->with('user_accessory',$user_accessory)

@@ -76,7 +76,9 @@ class AdministratorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $administrator = User::findOrFail($id);
+
+        return view('admin.administrator.edit')->with('administrator',$administrator);
     }
 
     /**
@@ -88,7 +90,25 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required',
+        ]);
+
+        $administrator  = User::find($id);
+
+    
+        
+        $administrator->name = $request->name;
+        $administrator->email =$request->email;  
+        $administrator->save();
+
+        $notification = array(
+            'message' => 'Administrator has been successfully updated.', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('administrator')->with($notification);
     }
 
     /**
@@ -99,6 +119,13 @@ class AdministratorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $administrator = User::find($id);
+        
+        $administrator->delete();
+        $notification = array(
+            'message' => 'User has been successfully deleted.', 
+            'alert-type' => 'error'
+        );
+        return redirect()->route('administrator')->with($notification);
     }
 }

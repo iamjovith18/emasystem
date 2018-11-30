@@ -67,6 +67,8 @@
                                     <th>Batch No.</th>
                                     <th>Category Name</th>
                                     <th>Date Issued</th>
+                                    <th>Remarks</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                                 <tr>
@@ -80,6 +82,8 @@
                                             <td> {{$au->accessory->batch_no}} </td>
                                             <td> {{$au->accessory->category->category_name}} </td>
                                             <td>{{date('F j,Y',strtotime($au->created_at))}}</td>
+                                            <td>Remarks</td>
+                                            <td><a title="Return" href="{{route('accessory.edit',['id'=>$au->id])}}" class="btn btn-warning"><i class="icon-undo"></i></a></td>
                                         </tr>
                                     @endforeach
                                 @else{
