@@ -128,6 +128,22 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'all-deployed-assets'
     ]);
 
+    Route::get('/all-deployed-assets/edit/{id}',[
+        'uses'=>'AllDeployedAssetsController@edit',
+        'as'=>'all-deployed-assets.edit'
+    ]);
+
+    Route::get('/all-deployed-assets/delete/{id}',[
+        'uses'=>'AllDeployedAssetsController@destroy',
+        'as'=>'all-deployed-assets.delete'
+    ]);
+
+    Route::post('/all-deployed-assets/update/{id}',[
+        'uses'=>'AllDeployedAssetsController@update',
+        'as'=>'all-deployed-assets.update'
+    ]);
+
+
     //Route for accessory
 
     Route::get('/accessory',[

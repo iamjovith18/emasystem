@@ -9,6 +9,7 @@ use App\Component_User;
 use App\System_Unit;
 use App\Category;
 use App\Unit_User;
+use App\Usercred;
 
 
 class AllDeployedAssetsController extends Controller
@@ -69,9 +70,15 @@ class AllDeployedAssetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($ua_id)
     {
-        //
+        $user_accessory = Accessory_User::findOrFail($ua_id);
+        $usernames = Usercred::orderBy('lname','asc')->get();
+        $categories = Category::all();
+
+        return view('admin.inventorymanagement.deployed-assets.edit')->with('user_accessory',$user_accessory)
+                                                                     ->with('usernames',$usernames)
+                                                                     ->with('categories',$categories);
     }
 
     /**
@@ -81,9 +88,26 @@ class AllDeployedAssetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ua_id)
     {
-        //
+        $this->validate($request,[
+            'username_id'=> 'required'
+        ]);
+           
+        $user_accessory = Accessory_User::findOrFail($ua_id);
+        
+        $user_accessory->username_id = $request->username_id;
+       
+
+        
+        $user_accessory->save();
+
+        $notification = array(
+            'message' => 'Accessory has been successfully updated.', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all-deployed-assets')->with($notification);
     }
 
     /**
@@ -92,8 +116,15 @@ class AllDeployedAssetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ua_id)
     {
-        //
+        $user_accessory = Accessory_User::findOrFail($ua_id);
+        
+        $user_accessory->delete();
+        $notification = array(
+            'message' => 'Accessory has been successfully deleted.', 
+            'alert-type' => 'error'
+        );
+        return redirect()->route('all-deployed-assets')->with($notification);
     }
 }

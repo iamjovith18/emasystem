@@ -64,6 +64,7 @@
 										<th>Batch No.</th>
 										<th>Issued To</th>
 										<th>Date Issued</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -78,6 +79,8 @@
 										<td>{{strtoupper($ua->accessory->batch_no)}}</td>    
 										<td>{{$ua->users->lname }}, {{$ua->users->fname}}</td>    
 										<td>{{date('F j,Y',strtotime($ua->created_at))}}</td>                 
+										<td><a title="Edit" href="{{route('all-deployed-assets.edit',['id'=>$ua->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>              
+										<a title="Delete" href="{{route('all-deployed-assets.delete',['id'=>$ua->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a></td>                 
 									</tr>
 									@endforeach      
 								</tbody>
