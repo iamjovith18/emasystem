@@ -133,14 +133,44 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'all-deployed-assets.edit'
     ]);
 
+    Route::get('/all-deployed-assets/edit-unit/{id}',[
+        'uses'=>'AllDeployedAssetsController@edit_unit',
+        'as'=>'all-deployed-assets.edit-unit'
+    ]);
+
+    Route::get('/all-deployed-assets/edit-component/{id}',[
+        'uses'=>'AllDeployedAssetsController@edit_component',
+        'as'=>'all-deployed-assets.edit-component'
+    ]);
+
     Route::get('/all-deployed-assets/delete/{id}',[
         'uses'=>'AllDeployedAssetsController@destroy',
         'as'=>'all-deployed-assets.delete'
     ]);
 
+    Route::get('/all-deployed-assets/delete-unit/{id}',[
+        'uses'=>'AllDeployedAssetsController@destroy_unit',
+        'as'=>'all-deployed-assets.delete-unit'
+    ]);
+
+    Route::get('/all-deployed-assets/delete-component/{id}',[
+        'uses'=>'AllDeployedAssetsController@destroy_component',
+        'as'=>'all-deployed-assets.delete-component'
+    ]);
+
     Route::post('/all-deployed-assets/update/{id}',[
         'uses'=>'AllDeployedAssetsController@update',
         'as'=>'all-deployed-assets.update'
+    ]);
+
+    Route::post('/all-deployed-assets/update-unit/{id}',[
+        'uses'=>'AllDeployedAssetsController@update_unit',
+        'as'=>'all-deployed-assets.update-unit'
+    ]);
+    
+    Route::post('/all-deployed-assets/update-component/{id}',[
+        'uses'=>'AllDeployedAssetsController@update_component',
+        'as'=>'all-deployed-assets.update-component'
     ]);
 
 

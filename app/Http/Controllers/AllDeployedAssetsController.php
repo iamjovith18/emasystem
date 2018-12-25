@@ -81,6 +81,28 @@ class AllDeployedAssetsController extends Controller
                                                                      ->with('categories',$categories);
     }
 
+    public function edit_unit($usu_id)
+    {
+        $unit_user = Unit_User::findOrFail($usu_id);
+        $usernames = Usercred::orderBy('lname','asc')->get();
+        $categories = Category::all();
+
+        return view('admin.inventorymanagement.deployed-assets.edit-unit')->with('unit_user',$unit_user)
+                                                                     ->with('usernames',$usernames)
+                                                                     ->with('categories',$categories);
+    }
+
+    public function edit_component($uc_id)
+    {
+        $user_component = Component_User::findOrFail($uc_id);
+        $usernames = Usercred::orderBy('lname','asc')->get();
+        $categories = Category::all();
+
+        return view('admin.inventorymanagement.deployed-assets.edit-component')->with('user_component',$user_component)
+                                                                     ->with('usernames',$usernames)
+                                                                     ->with('categories',$categories);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -110,6 +132,48 @@ class AllDeployedAssetsController extends Controller
         return redirect()->route('all-deployed-assets')->with($notification);
     }
 
+    public function update_unit(Request $request, $usu_id)
+    {
+        $this->validate($request,[
+            'username_id'=>'required'
+        ]);
+
+        $unit_user = Unit_User::findOrFail($usu_id);
+
+        $unit_user->username_id = $request->username_id;
+        
+        $unit_user->save();
+
+        $notification = array(
+            'message'=>'Unit has been successfully updated',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all-deployed-assets')->with($notification);
+
+    }
+
+    public function update_component(Request $request, $uc_id)
+    {
+        $this->validate($request,[
+            'username_id'=>'required'
+        ]);
+
+        $user_component = Component_User::findOrFail($uc_id);
+
+        $user_component->username_id = $request->username_id;
+        
+        $user_component->save();
+
+        $notification = array(
+            'message'=>'Asset Component has been successfully updated',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all-deployed-assets')->with($notification);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -124,6 +188,30 @@ class AllDeployedAssetsController extends Controller
         $notification = array(
             'message' => 'Accessory has been successfully deleted.', 
             'alert-type' => 'error'
+        );
+        return redirect()->route('all-deployed-assets')->with($notification);
+    }
+
+    public function destroy_unit($usu_id)
+    {
+        $unit_user = Unit_User::findOrFail($usu_id);
+
+        $unit_user->delete();
+        $notification = array(
+            'message'=>'Unit has been successfully deleted.',
+            'alert-type'=>'error'
+        );
+        return redirect()->route('all-deployed-assets')->with($notification);
+    }
+
+    public function destroy_component($uc_id)
+    {
+        $user_component = Component_User::findOrFail($uc_id);
+
+        $user_component->delete();
+        $notification = array(
+            'message'=>'Asset Component has been successfully deleted.',
+            'alert-type'=>'error'
         );
         return redirect()->route('all-deployed-assets')->with($notification);
     }

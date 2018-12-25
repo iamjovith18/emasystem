@@ -66,7 +66,8 @@ class AccessoryController extends Controller
             'serial_no'=>$request->serial_no,
             'batch_no'=>$request->batch_no,
             'quantity'=>$request->quantity,
-            'min_qty'=>$request->min_qty
+            'min_qty'=>$request->min_qty,
+            'order_qty'=>$request->order_qty
             
         ]);
             $notification = array(
@@ -118,7 +119,7 @@ class AccessoryController extends Controller
         $this->validate($request,[
             'accessory_name'=> 'required',
             'category_id'=> 'required',
-            'brand_id'=> 'required'
+            'brand_id'=> 'required',
         ]);
            
         $accessory  = accessory::find($id);
@@ -131,6 +132,7 @@ class AccessoryController extends Controller
         $accessory->batch_no =$request->batch_no;
         $accessory->quantity =$request->quantity;
         $accessory->min_qty =$request->min_qty;
+        $accessory->order_qty=$request->order_qty;
 
         
         $accessory->save();
@@ -173,7 +175,7 @@ class AccessoryController extends Controller
         $this->validate($request,[
             'accessory_id'=>'required',
             'username_id'=>'required',
-            'order_qty'=> 'required',
+            'order_quantity'=> 'required',
         ]);
 
         $accessory_user = Accessory_User::create([

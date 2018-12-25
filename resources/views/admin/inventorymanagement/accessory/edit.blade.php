@@ -31,7 +31,7 @@
                 <div class="controls">
                     <select name="category_id" required >
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}" @if($accessory->category->id==$category->id) selected @endif > {{$category->category_name}}</option>
+                          <option value="{{$category->id}}" @if($accessory->category->id==$category->id) selected @endif > {{$category->category_name}}</option>
                         @endforeach
                     </select>      
                 </div>
@@ -42,7 +42,7 @@
                 <div class="controls">
                     <select name="brand_id" required>
                         @foreach($brands as $brand)
-                        <option value="{{$brand->id}}" @if($accessory->brand->id==$brand->id) selected @endif > {{$brand->brand}}</option>
+                          <option value="{{$brand->id}}" @if($accessory->brand->id==$brand->id) selected @endif > {{$brand->brand}}</option>
                         @endforeach
                     </select> 
                 </div>
@@ -77,10 +77,16 @@
                   <input type="number" class="span6" name="min_qty" value="{{$accessory->min_qty }}" id="required">
                 </div>
             </div>
+            <div class="control-group">
+                <label class="control-label">Order Qty</label>
+                <div class="controls">
+                  <input type="number" class="span6" name="order_qty" value="{{$accessory->order_qty}}" id="required">
+                </div>
+            </div>
             
             <div class="form-actions">
                 <input type="submit" value="Save" class="btn btn-success">
-              </div>
+            </div>
 
           </form>
         </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class accessory extends Model
 {
-    protected $fillable = array('accessory_name','category_id','brand_id','model_no','serial_no','batch_no','quantity','min_qty'  );
+    protected $fillable = array('accessory_name','category_id','brand_id','model_no','serial_no','batch_no','quantity','min_qty','order_qty' );
 
     public function category(){
         return $this->belongsTo('App\Category');
@@ -21,6 +21,10 @@ class accessory extends Model
     }
 
     public function accessory_users(){
+        return $this->hasMany('App\Accessory_User','id','accessory_id');
+    }
+
+    public function unit_users(){
         return $this->hasMany('App\Accessory_User','id','accessory_id');
     }
 }

@@ -10,9 +10,8 @@ class Unit_User extends Model
 
     public function system_unit(){
         return $this->belongsTo('App\System_Unit','system_unit_id','id');
-    } 
-
-
+    }
+    
     public function users(){
         return $this->belongsTo('App\Usercred','username_id','id');
     }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-/* checkup accessory */
+/* all deployed asset for UNITS */
 
 <div id="content">
 <div id="content-header">
@@ -15,18 +15,18 @@
     <div class="span12">
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>{{ucwords($user_accessory->accessory->brand->brand)}}</h5>
+          <h5>{{ucwords($unit_user->system_unit->brand->brand)}}</h5>
         </div>
         <div class="widget-content nopadding">
-          <form class="form-horizontal" method="post" action="{{route('all-deployed-assets.update',['id'=>$user_accessory->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+          <form class="form-horizontal" method="post" action="{{route('all-deployed-assets.update-unit',['id'=>$unit_user->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
             {{csrf_field()}}
             
 
             <div class="control-group">
-                <label class="control-label">Accessory Name</label>
+                <label class="control-label">Unit Name</label>
                 <div class="controls">
-                  <input type="hidden" name="accessory_id" value="{{strtoupper($user_accessory->accessory->id)}}">
-                  <input type="text" class="span6" value="{{strtoupper($user_accessory->accessory->accessory_name)}}" disabled>
+                  <input type="hidden" name="system_unit_id" value="{{strtoupper($unit_user->system_unit->id)}}">
+                  <input type="text" class="span6" value="{{strtoupper($unit_user->system_unit->model)}}" disabled>
                 </div>
             </div>
             <div class="control-group">
@@ -34,7 +34,7 @@
                 <div class="controls">
                     <select name="username_id" required >
                         @foreach($usernames as $u)
-                            <option value="{{$u->id}}" @if($user_accessory->users->id ==$u->id) selected @endif>{{strtoupper($u->lname . ', '. $u->fname)}}</option>
+                            <option value="{{$u->id}}" @if($unit_user->users->id ==$u->id) selected @endif>{{strtoupper($u->lname . ', '. $u->fname)}}</option>
                         @endforeach
                     </select>      
                 </div>

@@ -30,6 +30,7 @@
 										<th>Category Name</th>
 										<th>Issued To</th>
 										<th>Date Issued</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -40,8 +41,28 @@
 										<td> {{strtoupper($uc->component->component_name)}} </td>
 										<td> {{strtoupper($uc->component->serial_no)}} </td>
 										<td> {{strtoupper($uc->component->category->category_name)}} </td>
-										<td>{{$uc->users->lname }}, {{$uc->users->fname}}</td>
-										<td>{{date('F j,Y',strtotime($uc->created_at))}}</td>         
+										<td>{{$uc->users->lname }}, {{$uc->users->fname}}
+											<b>
+										       
+											   @if($uc->users->status==="Awol")
+											   <span class="label label-warning">{{ucfirst($uc->users->status)}}</span>
+											   @endif
+											   @if($uc->users->status==="Suspended")
+											   <span class="label label-warning">{{ucfirst($uc->users->status)}}</span>
+											   @endif
+											   @if($uc->users->status==="Active")
+											   <span class="label label-success">{{ucfirst($uc->users->status)}}</span>
+											   @endif
+												@if($uc->users->status==="active")
+											   <span class="label label-success">{{ucfirst($uc->users->status)}}</span>
+											   @endif											   
+										   </b>
+										</td>
+										<td>{{date('F j,Y',strtotime($uc->created_at))}}</td>
+										<td>
+											<a title="Edit" href="{{route('all-deployed-assets.edit-component',['id'=>$uc->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>              
+											<a title="Delete" href="{{route('all-deployed-assets.delete-component',['id'=>$uc->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a>
+										</td>            
 									</tr>
 									@endforeach      
 								</tbody>
@@ -77,7 +98,22 @@
 										<td>{{strtoupper($ua->accessory->model_no)}}</td>    
 										<td>{{strtoupper($ua->accessory->serial_no)}}</td>                                   
 										<td>{{strtoupper($ua->accessory->batch_no)}}</td>    
-										<td>{{$ua->users->lname }}, {{$ua->users->fname}}</td>    
+										<td>{{$ua->users->lname }}, {{$ua->users->fname}}
+											<b>  
+											   @if($ua->users->status==="Awol")
+											   <span class="label label-warning">{{ucfirst($ua->users->status)}}</span>
+											   @endif
+											   @if($ua->users->status==="Suspended")
+											   <span class="label label-warning">{{ucfirst($ua->users->status)}}</span>
+											   @endif
+											   @if($ua->users->status==="Active")
+											   <span class="label label-success">{{ucfirst($ua->users->status)}}</span>
+											   @endif
+												@if($ua->users->status==="active")
+											   <span class="label label-success">{{ucfirst($ua->users->status)}}</span>
+											   @endif	   
+										   </b>
+										</td>    
 										<td>{{date('F j,Y',strtotime($ua->created_at))}}</td>                 
 										<td><a title="Edit" href="{{route('all-deployed-assets.edit',['id'=>$ua->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>              
 										<a title="Delete" href="{{route('all-deployed-assets.delete',['id'=>$ua->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a></td>                 
@@ -100,6 +136,7 @@
 										<th>Category</th>
 										<th>Issued To</th>
 										<th>Date Issued</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -109,8 +146,27 @@
 										<td>{{strtoupper($usu->system_unit->model)}}</td>
 										<td>{{strtoupper($usu->system_unit->serial_no)}}</td>
 										<td>{{strtoupper($usu->system_unit->category->category_name)}}</td>                                     			                 
-										<td>{{$usu->users->lname }}, {{$usu->users->fname}}</td>                                     			                 
-									  <td>{{date('F j,Y',strtotime($usu->created_at))}}</td>                           			                                                   			                 
+										<td>{{$usu->users->lname }}, {{$usu->users->fname}}
+											<b>										       
+											   @if($usu->users->status==="Awol")
+											   <span class="label label-warning">{{ucfirst($usu->users->status)}}</span>
+											   @endif
+											   @if($usu->users->status==="Suspended")
+											   <span class="label label-warning">{{ucfirst($usu->users->status)}}</span>
+											   @endif
+											   @if($usu->users->status==="Active")
+											   <span class="label label-success">{{ucfirst($usu->users->status)}}</span>
+											   @endif
+												@if($usu->users->status==="active")
+											   <span class="label label-success">{{ucfirst($usu->users->status)}}</span>
+											   @endif											   
+										    </b>
+										</td>                                     			                 
+									  <td>{{date('F j,Y',strtotime($usu->created_at))}}</td>
+									  <td>
+									  	<a title="Edit" href="{{route('all-deployed-assets.edit-unit',['id'=>$usu->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>              
+										<a title="Delete" href="{{route('all-deployed-assets.delete-unit',['id'=>$usu->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a>
+									  </td>                            			                                                   			                 
 									</tr>
 									@endforeach      
 								</tbody>
