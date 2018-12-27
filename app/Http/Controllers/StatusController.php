@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Usercred;
-use App\Brand;
+use App\Status;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        
-        $brands = Brand::all();
-        return view('admin.inventorymanagement.brands.index')->with('brands',$brands);
+        $status = Status::orderby('status_name','ASC')->get();
+        return view('admin.usermanagement.status.index')->with('status',$status);
     }
 
     /**
@@ -27,7 +25,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.inventorymanagement.brands.create');
+        return view('admin.usermanagement.status.create');
     }
 
     /**
@@ -39,28 +37,29 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'brand'=> 'required|Unique:brands'
+            'status_name'=>'required|Unique:statuses'
         ]);
 
-
-        $brand = Brand::create([
-            'brand'=>$request->brand,
+        $status = Status::create([
+            'status_name'=>$request->status_name,
         ]);
-        $notification = array(
-            'message' => 'New brand is successfully added.', 
-            'alert-type' => 'success'
-        );
         
+        $notification = array(
+            'message'=> 'New Status is successfully added',
+            'alert-type'=> 'success'
+        );
+
         return redirect()->back()->with($notification);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Status $status)
     {
         //
     }
@@ -68,58 +67,57 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand, $id)
+    public function edit(Status $status, $id)
     {
-        $brand  = Brand::find($id);
-        return view('admin.inventorymanagement.brands.edit')->with('brand', $brand);
+        $status  = Status::find($id);
+        return view('admin.usermanagement.status.edit')->with('status', $status);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Brand  $brand
+     * @param  \App\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand, $id)
+    public function update(Request $request, Status $status, $id)
     {
-        
         $this->validate($request,[
-            'brand'=> 'required|Unique:brands'
+            'status_name'=> 'required|Unique:Statuses'
         ]);
            
-        $brands  = Brand::find($id);
+        $status  = Status::find($id);
 
-        $brands->brand =$request->brand;
+        $status->status_name =$request->status_name;
         
-        $brands->save();
+        $status->save();
 
         $notification = array(
-            'message' => 'Brand has been successfully updated.', 
+            'message' => 'Status has been successfully updated.', 
             'alert-type' => 'success'
         );
 
-        return redirect()->route('brand')->with($notification);
+        return redirect()->route('status')->with($notification);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand, $id)
+    public function destroy(Status $status,$id)
     {
-        $brands  = Brand::find($id);
-        $brands->delete();
+        $status  = Status::find($id);
+        $status->delete();
 
         $notification = array(
-            'message' => 'Brand has been successfully deleted.', 
+            'message' => 'Status has been successfully deleted.', 
             'alert-type' => 'error'
         );
-        return redirect()->route('brand')->with($notification);;
+        return redirect()->route('status')->with($notification);;
     }
 }

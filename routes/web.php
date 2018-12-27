@@ -92,6 +92,35 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'brand.delete'
     ]);
 
+    //Route for Status
+    Route::get('/status',[
+        'uses'=>'StatusController@index',
+        'as'=>'status'
+    ]);
+
+    Route::get('status/create',[
+        'uses'=>'StatusController@create',
+        'as'=>'status.create'
+    ]);
+    Route::post('status/store',[
+        'uses'=>'StatusController@store',
+        'as'=>'status.store'
+    ]);
+
+    Route::get('/status/edit/{id}',[
+        'uses'=>'StatusController@edit',
+        'as'=>'status.edit'
+    ]);
+    Route::post('/status/update/{id}',[
+        'uses'=>'StatusController@update',
+        'as'=>'status.update'
+    ]);
+    Route::get('/status/delete/{id}',[
+        'uses'=>'StatusController@destroy',
+        'as'=>'status.delete'
+    ]);
+
+
     //Route for categories
 
     Route::get('/category',[

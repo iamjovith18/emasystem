@@ -21,6 +21,7 @@
         <li><a href="{{route('administrator')}}">Administrator</a></li>
         <li><a href="{{route('brand')}}">Brands</a></li>
         <li><a href="{{route('category')}}">Categories</a></li>
+        <li><a href="{{route('status')}}">Status</a></li>
       </ul>
     </li>
   </ul>

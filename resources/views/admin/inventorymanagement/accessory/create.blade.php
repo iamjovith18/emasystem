@@ -24,6 +24,7 @@
                 <label class="control-label">Brand Name</label>
                 <div class="controls">
                     <select name="brand_id" required>
+                            <option selected disabled>Select</option>
                         @foreach($brands as $brand)
                             <option value="{{$brand->id}}">{{$brand->brand}}</option>
                         @endforeach
@@ -40,6 +41,7 @@
                 <label class="control-label">Category Name</label>
                 <div class="controls">
                     <select name="category_id" required >
+                            <option selected disabled>Select</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->category_name}}</option>
                         @endforeach
