@@ -9,6 +9,8 @@ use App\Accessory;
 use App\Accessory_User;
 use App\System_Unit;
 use App\Unit_User;
+use App\Access;
+use App\Access_Usercred;
 use Illuminate\Http\Request;
 use Session;
 
@@ -25,6 +27,18 @@ class UsercredController extends Controller
         return view('admin.usermanagement.view')->with('usercredentials',$usercredentials);
     }
 
+    public function employee_access()
+    {
+        $employees = Usercred::where('status','Suspended')->orWhere('status','Awol')->OrderBy('lname','ASC')->get();
+        $access = Access::OrderBy('access_name','ASC')->get();
+        $access_user = Access_Usercred::all();
+
+        return view('admin.usermanagement.viewemployeeaccess')->with('access',$access)
+                                                              ->with('employees',$employees)
+                                                              ->with('access_user',$access_user);
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +46,9 @@ class UsercredController extends Controller
      */
     public function create()
     {
-        return view('admin.usermanagement.create');
+        $access = Access::orderBy('access_name','ASC')->get();
+        
+        return view('admin.usermanagement.create')->with('access',$access);
     }
 
     /**
@@ -43,6 +59,7 @@ class UsercredController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validate($request,[
             'firstname'=> 'required',
             'lastname'=>'required',
@@ -53,7 +70,8 @@ class UsercredController extends Controller
             'user_password'=>'required|min:5',
             'department'=>'required',
             //'batch'=>'required',
-            'status'=>'required'
+            'status'=>'required',
+    
         ]);
 
         $usercreds = Usercred::create([
@@ -68,11 +86,14 @@ class UsercredController extends Controller
             'extension_no'=>$request->extension_no,
             'status'=>$request->status,
         ]);
-            $notification = array(
-                'message' => 'New employee is successfully added.', 
-                'alert-type' => 'success'
-            );
-            return redirect()->back()->with($notification);
+        
+        $usercreds->access()->attach($request->access);
+
+        $notification = array(
+            'message' => 'New employee is successfully added.', 
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -101,7 +122,9 @@ class UsercredController extends Controller
     {
         
         $usercredential  = Usercred::find($id);
-        return view('admin.usermanagement.edit')->with('usercredential', $usercredential);
+        $access = Access::OrderBy('access_name','ASC')->get();
+        return view('admin.usermanagement.edit')->with('usercredential', $usercredential)
+                                                ->with('access',$access);
     }
 
     /**
@@ -138,6 +161,8 @@ class UsercredController extends Controller
         $usercredential->extension_no =$request->extension_no;
         $usercredential->status =$request->status;
         $usercredential->save();
+
+        $usercredential->access()->sync($request->access);
 
         $notification = array(
             'message' => 'Employee has been successfully updated.', 

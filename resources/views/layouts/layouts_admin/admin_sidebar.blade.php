@@ -4,6 +4,7 @@
     <li class="active"><a href="{{route('home')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Employee Management</span></a>
       <ul>
+        <li><a href="{{route('usermanagement.employee-access')}}">View All Access</a></li>
         <li><a href="{{route('usermanagement')}}">View All Employee</a></li>
         <li><a href="{{route('usermanagement.create')}}">Add New Employee</a></li>
       </ul>
@@ -21,6 +22,7 @@
         <li><a href="{{route('administrator')}}">Administrator</a></li>
         <li><a href="{{route('brand')}}">Brands</a></li>
         <li><a href="{{route('category')}}">Categories</a></li>
+        <li><a href="{{route('access')}}">Employee Access</a></li>
         <li><a href="{{route('status')}}">Status</a></li>
       </ul>
     </li>

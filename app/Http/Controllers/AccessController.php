@@ -14,7 +14,8 @@ class AccessController extends Controller
      */
     public function index()
     {
-        //
+        $access = Access::orderby('access_name','ASC')->get();
+        return view('admin.usermanagement.access.index')->with('access',$access);
     }
 
     /**
@@ -24,7 +25,7 @@ class AccessController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.usermanagement.access.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class AccessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'access_name'=>'required|Unique:accesses'
+        ]);
+
+        $access = Access::create([
+            'access_name'=>$request->access_name,
+        ]);
+        
+        $notification = array(
+            'message'=> 'New Access is successfully added',
+            'alert-type'=> 'success'
+        );
+
+        return redirect()->back()->with($notification);
+        
     }
 
     /**
@@ -55,9 +70,10 @@ class AccessController extends Controller
      * @param  \App\Access  $access
      * @return \Illuminate\Http\Response
      */
-    public function edit(Access $access)
+    public function edit(Access $access, $id)
     {
-        //
+        $access  = Access::find($id);
+        return view('admin.usermanagement.access.edit')->with('access', $access);
     }
 
     /**
@@ -67,9 +83,24 @@ class AccessController extends Controller
      * @param  \App\Access  $access
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Access $access)
+    public function update(Request $request, Access $access, $id)
     {
-        //
+        $this->validate($request,[
+            'access_name'=> 'required|Unique:Accesses'
+        ]);
+           
+        $access  = Access::find($id);
+
+        $access->access_name =$request->access_name;
+        
+        $access->save();
+
+        $notification = array(
+            'message' => 'Access has been successfully updated.', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('access')->with($notification);
     }
 
     /**
@@ -78,8 +109,15 @@ class AccessController extends Controller
      * @param  \App\Access  $access
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Access $access)
+    public function destroy(Access $access, $id)
     {
-        //
+        $access  = Access::find($id);
+        $access->delete();
+
+        $notification = array(
+            'message' => 'Access has been successfully deleted.', 
+            'alert-type' => 'error'
+        );
+        return redirect()->route('access')->with($notification);
     }
 }

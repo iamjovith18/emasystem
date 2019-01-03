@@ -118,6 +118,6 @@ class StatusController extends Controller
             'message' => 'Status has been successfully deleted.', 
             'alert-type' => 'error'
         );
-        return redirect()->route('status')->with($notification);;
+        return redirect()->route('status')->with($notification);
     }
 }

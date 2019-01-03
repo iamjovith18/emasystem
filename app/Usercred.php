@@ -30,4 +30,12 @@ class Usercred extends Model
         return $this->belongsToMany('App\Usercred','App\System_Unit','App\Unit_User');
     }
 
+    public function access(){
+        return $this->belongsToMany('App\Access');
+    }
+
+    public function access_users(){
+        return $this->belongstoMany('App\Usercred','App\Access','App\Access_Usercred');
+    }
+
 }

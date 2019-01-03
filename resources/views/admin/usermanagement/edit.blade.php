@@ -96,6 +96,20 @@
                 </div>
               </div>
               <div class="control-group">
+                <label class="control-label">Employee Access</label>
+                <div class="controls">
+                  @foreach($access as $a)
+                  {{ucfirst($a->access_name)}}<input type="checkbox" class="span1" value="{{$a->id}}" name="access[]" 
+                    @foreach($usercredential->access as $access_u)
+                      @if($a->id == $access_u->id) 
+                        checked 
+                      @endif 
+                    @endforeach 
+                  >
+                  @endforeach
+                </div>
+              </div>
+              <div class="control-group">
                 <label class="control-label">Status</label>
                 <div class="controls">
                   <select name="status" >

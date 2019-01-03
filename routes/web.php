@@ -35,6 +35,11 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'usermanagement'
     ]);
 
+    Route::get('/usermanagement/employee_access',[
+        'uses'=>'UsercredController@employee_access',
+        'as'=>'usermanagement.employee-access'
+    ]);
+
     Route::get('/usermanagement/show/{id}',[
         'uses'=>'UsercredController@show',
         'as'=>'usermanagement.show'
@@ -70,11 +75,11 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'brand'
     ]);
 
-    Route::get('brand/create',[
+    Route::get('/brand/create',[
         'uses'=>'BrandController@create',
         'as'=>'brand.create'
     ]);
-    Route::post('brand/store',[
+    Route::post('/brand/store',[
         'uses'=>'BrandController@store',
         'as'=>'brand.store'
     ]);
@@ -98,11 +103,11 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'status'
     ]);
 
-    Route::get('status/create',[
+    Route::get('/status/create',[
         'uses'=>'StatusController@create',
         'as'=>'status.create'
     ]);
-    Route::post('status/store',[
+    Route::post('/status/store',[
         'uses'=>'StatusController@store',
         'as'=>'status.store'
     ]);
@@ -120,6 +125,33 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'status.delete'
     ]);
 
+    //Route for Access
+    Route::get('/access',[
+        'uses'=>'AccessController@index',
+        'as'=>'access'
+    ]);
+
+    Route::get('/access/create',[
+        'uses'=>'AccessController@create',
+        'as'=>'access.create'
+    ]);
+    Route::post('/access/store',[
+        'uses'=>'AccessController@store',
+        'as'=>'access.store'
+    ]);
+
+    Route::get('/access/edit/{id}',[
+        'uses'=>'AccessController@edit',
+        'as'=>'access.edit'
+    ]);
+    Route::post('/access/update/{id}',[
+        'uses'=>'AccessController@update',
+        'as'=>'access.update'
+    ]);
+    Route::get('/access/delete/{id}',[
+        'uses'=>'AccessController@destroy',
+        'as'=>'access.delete'
+    ]);
 
     //Route for categories
 
