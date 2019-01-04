@@ -63,6 +63,11 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'uses'=>'UsercredController@update',
         'as'=>'usermanagement.update'
     ]);
+
+    Route::post('/usernamegement/update_access',[
+        'uses'=>'UsercredController@update_access',
+        'as'=>'usermanagement.update_access'
+    ]);
     Route::get('/usermanagement/delete/{id}',[
         'uses'=>'UsercredController@destroy',
         'as'=>'usermanagement.delete'

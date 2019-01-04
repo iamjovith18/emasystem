@@ -24,18 +24,19 @@ class UsercredController extends Controller
     public function index()
     {
         $usercredentials = Usercred::orderBy('lname','asc')->get();
-        return view('admin.usermanagement.view')->with('usercredentials',$usercredentials);
+        $access = Access::OrderBy('access_name','ASC')->get();
+        return view('admin.usermanagement.view')->with('usercredentials',$usercredentials)
+                                                ->with('access',$access);
     }
 
     public function employee_access()
     {
-        $employees = Usercred::where('status','Suspended')->orWhere('status','Awol')->OrderBy('lname','ASC')->get();
-        $access = Access::OrderBy('access_name','ASC')->get();
-        $access_user = Access_Usercred::all();
 
-        return view('admin.usermanagement.viewemployeeaccess')->with('access',$access)
-                                                              ->with('employees',$employees)
-                                                              ->with('access_user',$access_user);
+        $usercredentials = Usercred::where('status','Suspended')->orWhere('status','Awol')->OrderBy('lname','ASC')->get();
+        $access = Access::OrderBy('access_name','ASC')->get();
+  
+        return view('admin.usermanagement.viewemployeeaccess')->with('usercredentials',$usercredentials)
+                                                ->with('access',$access);
         
     }
 
@@ -137,6 +138,9 @@ class UsercredController extends Controller
     public function update(Request $request, Usercred $usercred,$id)
     
     {
+        $usercredential  = Usercred::find($id);
+        $access = Access::OrderBy('access_name','ASC')->get();
+
         $this->validate($request,[
             'firstname'=> 'required',
             'lastname'=>'required',
@@ -169,8 +173,57 @@ class UsercredController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('usermanagement')->with($notification);
+        //return redirect()->route('usermanagement')->with($notification);
+        return view('admin.usermanagement.edit')->with('usercredential', $usercredential)
+                                                ->with('access',$access)
+                                                ->with($notification);
     }
+
+    public function update_access(Request $request, Usercred $usercred,$id)
+    {
+        
+        $usercredential  = Usercred::find($id);
+        $access = Access::OrderBy('access_name','ASC')->get();
+        
+        $this->validate($request,[
+            'firstname'=> 'required',
+            'lastname'=>'required',
+            'job_title'=>'required',
+            'email_add'=>'required',
+            'username'=>'required',
+            'user_password'=>'required|min:5',
+            'department'=>'required',
+            //'batch'=>'required',
+            'status'=>'required'
+        ]);
+        
+        $usercredential = Usercred::findOrfail($id);
+        $usercredential->fname =$request->firstname;
+        $usercredential->lname =$request->lastname;
+        $usercredential->job_title =$request->job_title;
+        $usercredential->email_add =$request->email_add;
+        $usercredential->username =$request->username;
+        $usercredential->password =$request->user_password;
+        $usercredential->department =$request->department;   
+        $usercredential->batch =$request->batch;
+        $usercredential->extension_no =$request->extension_no;
+        $usercredential->status =$request->status;
+        $usercredential->save();
+
+        $usercredential->access()->sync($request->access);
+
+        $notification = array(
+            'message' => 'Employee has been successfully updated.', 
+            'alert-type' => 'success'
+        );
+
+        //return redirect()->route('usermanagement')->with($notification);
+        return view('admin.usermanagement.edit')->with('usercredential', $usercredential)
+                                                ->with('access',$access)
+                                                ->with($notification);
+
+    }
+
 
     /**
      * Remove the specified resource from storage.

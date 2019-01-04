@@ -29,7 +29,7 @@
                   <th>Batch</th>
                   <th>Extension #</th>
                   <th>Status</th>
-                  <th>Date Created</th>              
+                  <th>Date Created</th>                          
                   <th>Action</th>              
                 </tr>
               </thead>
@@ -55,10 +55,6 @@
                             </td>
                         </tr>
                     @endforeach
-                @else
-                        <tr>
-                            <td class="text-center" colspan="12">No data found!!!</td>   
-                        </tr>
                 @endif
                 </tr>      
               </tbody>
