@@ -14,7 +14,7 @@
   
   <div class="container-fluid"><hr>
     <a href="{{route('accessory.create')}}" class="btn btn-primary ">Create</a>
-      <div class="widget-box">
+      <div class="widget-box" style="overflow-x:auto;">
             <div class="widget-title">
               <ul class="nav nav-tabs">
                 @foreach($categories as $count => $cat)

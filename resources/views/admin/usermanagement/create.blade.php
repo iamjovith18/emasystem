@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Email Address</label>
+                <label class="control-label">Email Address/PC Login</label>
                 <div class="controls">
                   <input type="email" class="span4" name="email_add" value="{{ old('email_add') }}"  id="required">
                   <select name="domain_name" id="required">
@@ -51,15 +51,21 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Username</label>
+                <label class="control-label">Email Password</label>
+                <div class="controls">
+                  <input type="text" class="span6" name="user_password" value="{{ old('user_password') }}" id="required">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">CRMS Username</label>
                 <div class="controls">
                   <input type="text" class="span6" name="username" value="{{ old('username') }}"  id="required">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Password</label>
+                <label class="control-label">CRMS Password</label>
                 <div class="controls">
-                  <input type="text" class="span6" name="user_password" value="{{ old('user_password') }}" id="required">
+                  <input type="text" class="span6" name="crms_password" value="{{ old('crms_password') }}" id="required">
                 </div>
             </div>
             <div class="control-group">

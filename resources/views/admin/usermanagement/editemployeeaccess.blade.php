@@ -19,7 +19,7 @@
             <h5>Employee Information</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="{{route('usermanagement.update',['id'=>$usercredential->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="{{route('usermanagement.update_employee_access',['id'=>$usercredential->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               {{csrf_field()}}
               <div class="control-group">
                 <label class="control-label">First Name</label>
@@ -46,21 +46,15 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Email Password</label>
-                <div class="controls">
-                  <input type="text" class="span6" name="user_password" value="{{$usercredential->password }}" id="required">
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">CRMS Username</label>
+                <label class="control-label">Username</label>
                 <div class="controls">
                   <input type="text" class="span6" name="username" value="{{$usercredential->username }}"  id="required">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">CRMS Password</label>
+                <label class="control-label">Password</label>
                 <div class="controls">
-                  <input type="text" class="span6" name="crms_password" value="{{$usercredential->crms_password}}" id="required">
+                  <input type="text" class="span6" name="user_password" value="{{$usercredential->password }}" id="required">
                 </div>
               </div>
               <div class="control-group">

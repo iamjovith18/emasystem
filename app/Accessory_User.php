@@ -17,5 +17,6 @@ class Accessory_User extends Model
     public function users(){
         return $this->belongsTo('App\Usercred','username_id','id');
     }
+
    
 }

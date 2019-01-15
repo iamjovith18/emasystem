@@ -23,8 +23,9 @@
                   <th>Fullname</th>
                   <th>Job Title</th>
                   <th>Email Address</th>
-                  <th>Username</th>
-                  <th>Password</th>
+                  <th>Email Password</th>
+                  <th>CRMS Username</th>
+                  <th>CRMS Password</th>
                   <th>Department</th>
                   <th>Batch</th>
                   <th>Extension #</th>
@@ -41,13 +42,14 @@
                             <td>{{$usercredential->lname.', '.$usercredential->fname}}</td>
                             <td>{{$usercredential->job_title}}</td>
                             <td>{{$usercredential->email_add}}</td>
-                            <td>{{$usercredential->username}}</td>
                             <td>{{$usercredential->password}}</td>
+                            <td>{{$usercredential->username}}</td>
+                            <td>{{$usercredential->crms_password}}</td>
                             <td>{{$usercredential->department}}</td>
                             <td>{{$usercredential->batch}}</td>
                             <td>{{$usercredential->extension_no}}</td>
                             <td>{{$usercredential->status}}</td>
-                            <td>{{$usercredential->created_at}}</td>
+                            <td>{{date('F j,Y',strtotime($usercredential->created_at))}}</td>
                             <td>
                               <a title="View" href="{{route('usermanagement.show',['id'=>$usercredential->id])}}" class="btn btn-info"><i class="icon-search"></i></a>
                               <a title="Edit" href="{{route('usermanagement.edit',['id'=>$usercredential->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>

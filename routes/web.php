@@ -59,9 +59,20 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'uses'=>'UsercredController@edit',
         'as'=>'usermanagement.edit'
     ]);
+
+    Route::get('/usermanagement/edit_employee_access/{id}',[
+        'uses'=>'UsercredController@edit_employee_access',
+        'as'=>'usermanagement.edit_employee_access'
+    ]);
+
     Route::post('/usermanagement/update/{id}',[
         'uses'=>'UsercredController@update',
         'as'=>'usermanagement.update'
+    ]);
+
+    Route::post('/usermanagement/update_employee_access/{id}',[
+        'uses'=>'UsercredController@update_employee_access',
+        'as'=>'usermanagement.update_employee_access'
     ]);
 
     Route::post('/usernamegement/update_access',[

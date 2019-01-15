@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Usercred;
 use App\Component;
 use App\Component_User;
-use App\Accessory;
+use App\accessory;
 use App\Accessory_User;
 use App\System_Unit;
 use App\Unit_User;
@@ -60,7 +60,7 @@ class UsercredController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        
         $this->validate($request,[
             'firstname'=> 'required',
             'lastname'=>'required',
@@ -69,11 +69,14 @@ class UsercredController extends Controller
             'domain_name'=>'required',
             'username'=>'required|unique:usercreds,username',
             'user_password'=>'required|min:5',
+            'crms_password'=>'required|min:5',
             'department'=>'required',
             //'batch'=>'required',
             'status'=>'required',
     
         ]);
+
+        //dd($request->all());
 
         $usercreds = Usercred::create([
             'fname'=>$request->firstname,
@@ -82,6 +85,7 @@ class UsercredController extends Controller
             'email_add'=>$request->email_add.''.$request->domain_name,
             'username'=>$request->username,
             'password'=>$request->user_password,
+            'crms_password'=>$request->crms_password,
             'department'=>$request->department,
             'batch'=>$request->batch,
             'extension_no'=>$request->extension_no,
@@ -128,6 +132,17 @@ class UsercredController extends Controller
                                                 ->with('access',$access);
     }
 
+    public function edit_employee_access(Usercred $usercred, $id)
+    {
+        
+        $usercredential  = Usercred::find($id);
+        $access = Access::OrderBy('access_name','ASC')->get();
+        return view('admin.usermanagement.editemployeeaccess')->with('usercredential', $usercredential)
+                                                ->with('access',$access);
+    }
+
+    
+
     /**
      * Update the specified resource in storage.
      *
@@ -148,6 +163,7 @@ class UsercredController extends Controller
             'email_add'=>'required',
             'username'=>'required',
             'user_password'=>'required|min:5',
+            'crms_password'=>'required|min:5',
             'department'=>'required',
             //'batch'=>'required',
             'status'=>'required'
@@ -160,6 +176,7 @@ class UsercredController extends Controller
         $usercredential->email_add =$request->email_add;
         $usercredential->username =$request->username;
         $usercredential->password =$request->user_password;
+        $usercredential->crms_password =$request->crms_password;
         $usercredential->department =$request->department;   
         $usercredential->batch =$request->batch;
         $usercredential->extension_no =$request->extension_no;
@@ -173,18 +190,19 @@ class UsercredController extends Controller
             'alert-type' => 'success'
         );
 
-        //return redirect()->route('usermanagement')->with($notification);
-        return view('admin.usermanagement.edit')->with('usercredential', $usercredential)
-                                                ->with('access',$access)
-                                                ->with($notification);
+        return redirect()->route('usermanagement')->with($notification);
+        
     }
 
-    public function update_access(Request $request, Usercred $usercred,$id)
+
+    
+
+    public function update_employee_access(Request $request, Usercred $usercred,$id)
     {
         
         $usercredential  = Usercred::find($id);
         $access = Access::OrderBy('access_name','ASC')->get();
-        
+
         $this->validate($request,[
             'firstname'=> 'required',
             'lastname'=>'required',
@@ -217,11 +235,7 @@ class UsercredController extends Controller
             'alert-type' => 'success'
         );
 
-        //return redirect()->route('usermanagement')->with($notification);
-        return view('admin.usermanagement.edit')->with('usercredential', $usercredential)
-                                                ->with('access',$access)
-                                                ->with($notification);
-
+        return redirect()->route('usermanagement.employee-access')->with($notification);
     }
 
 

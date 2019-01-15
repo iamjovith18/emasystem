@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usercred extends Model
 {
     protected $fillable =[
-        'fname','lname','job_title','email_add','username','password','department','batch','extension_no','status',
+        'fname','lname','job_title','email_add','username','password','crms_password','department','batch','extension_no','status',
     ];
 
     public function components(){
@@ -19,7 +19,7 @@ class Usercred extends Model
     }
 
     public function accessory_user(){
-        return $this->belongsToMany('App\Usercred','App\Accesory','App\Accessory_User');
+        return $this->belongsToMany('App\Usercred','App\accessory','App\Accessory_User');
     }
 
     public function accessories(){
@@ -35,7 +35,7 @@ class Usercred extends Model
     }
 
     public function access_users(){
-        return $this->belongstoMany('App\Usercred','App\Access','App\Access_Usercred');
+        return $this->belongsToMany('App\Usercred','App\Access','App\Access_Usercred');
     }
 
 }

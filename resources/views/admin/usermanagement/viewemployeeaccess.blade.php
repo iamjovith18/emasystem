@@ -39,10 +39,11 @@
                             <td>{{$usercredential->username}}</td>
                             <td>{{$usercredential->status}}</td>
             
-                            <form class="form-horizontal" method="post" action="{{route('usermanagement.update_access',['id'=>$usercredential->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                            <form class="form-horizontal" method="post" action="{{route('usermanagement.update_employee_access',['id'=>$usercredential->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                            {{csrf_field()}}
                             @foreach($access as $a)
                             <td>
-                                <input type="checkbox" class="span1" value="{{$a->id}}" name="access[]" 
+                                <input onclick="return false;" type="checkbox" class="span1"value="{{$a->id}}" name="access[]" 
                                 @foreach($usercredential->access as $access_u)
                                     @if($a->id == $access_u->id) 
                                         checked 
@@ -52,8 +53,7 @@
                             </td>
                             @endforeach
                             <td>
-                              <a title="Edit" href="{{route('usermanagement.edit',['id'=>$usercredential->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
-                              <a title="Delete" href="{{route('usermanagement.delete',['id'=>$usercredential->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure do you want to delete this user?')" ><i class="icon-trash"></i></a>
+                              <a title="Edit" href="{{route('usermanagement.edit_employee_access',['id'=>$usercredential->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
                             </td>
                             </form>
                         </tr>
