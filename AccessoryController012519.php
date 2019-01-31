@@ -7,7 +7,9 @@ use App\Category;
 use App\Brand;
 use App\Usercred;
 use App\Accessory_User;
+use App\Status;
 use Illuminate\Http\Request;
+
 
 class AccessoryController extends Controller
 {
@@ -26,7 +28,8 @@ class AccessoryController extends Controller
         return view('admin.inventorymanagement.accessory.index')
                 ->with('accessories',$accessories)
                 ->with('categories',$categories)
-                ->with('brands',$brands);
+                ->with('brands',$brands)
+                ->with('status',$status);
     }
 
     /**
@@ -36,12 +39,15 @@ class AccessoryController extends Controller
      */
     public function create()
     {
-        //$categories = Category::orderBy('category_name','ASC')->get();
+        
         $categories = Category::where('type','Accessory')->OrderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
+        $status = Status::all();
         return view('admin.inventorymanagement.accessory.create')
-                    ->with('categories',$categories)
-                    ->with('brands',$brands);
+                    ->with('categories',$categories)              
+                    ->with('brands',$brands)
+                    ->with('status',$status);
+        
     }
 
     /**

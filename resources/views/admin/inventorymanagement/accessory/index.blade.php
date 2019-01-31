@@ -41,6 +41,7 @@
                   <th>Total</th>
                   <th>Available</th>
                   <th>Created Date</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -56,6 +57,7 @@
                             <td>{{$accessory->quantity}}</td>
                             <td>{{$accessory->quantity - $accessory->order_qty}}</td>                 
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
+                            <td>{{strtoupper($accessory->status->status_name)}}</td>
                             <td>
                               @if($accessory->quantity - $accessory->order_qty <= 0 )
                               <a title="No Available" class="btn btn-danger" disabled><i class="icon-shopping-cart"></i></a>

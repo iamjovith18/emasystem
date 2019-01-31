@@ -73,7 +73,16 @@
                   <input type="number" class="span6" name="quantity" value="1" id="required">
                 </div>
             </div>
-            
+            <div class="control-group">
+                <label class="control-label">Status</label>
+                <div class="controls">
+                    <select name="status_id" required >
+                        @foreach($status as $s)
+                            <option value="{{$s->id}}">{{$s->status_name}}</option>
+                        @endforeach
+                    </select>      
+                </div>
+            </div>    
             <div class="form-actions">
                 <input type="submit" value="Save" class="btn btn-success">
               </div>

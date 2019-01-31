@@ -7,7 +7,9 @@ use App\Category;
 use App\Brand;
 use App\Usercred;
 use App\Accessory_User;
+use App\Status;
 use Illuminate\Http\Request;
+
 
 class AccessoryController extends Controller
 {
@@ -29,7 +31,8 @@ class AccessoryController extends Controller
                 ->with('accessories',accessory::orderBy('accessory_name','ASC')->get())
                 ->with('headsets',accessory::where('category_id',3)->orderBy('accessory_name','ASC')->get())
                 ->with('categories',Category::where('type','Accessory')->orderBy('category_name','ASC')->get())
-                ->with('brands',Brand::orderBy('brand','ASC')->get());
+                ->with('brands',Brand::orderBy('brand','ASC')->get())
+                ->with('status',Status::all());
     }
 
     /**
@@ -42,9 +45,11 @@ class AccessoryController extends Controller
         //$categories = Category::orderBy('category_name','ASC')->get();
         $categories = Category::where('type','Accessory')->OrderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
+        $status = Status::orderBy('status_name','ASC')->get();
         return view('admin.inventorymanagement.accessory.create')
                     ->with('categories',$categories)
-                    ->with('brands',$brands);
+                    ->with('brands',$brands)
+                    ->with('status',$status);
     }
 
     /**
@@ -69,7 +74,8 @@ class AccessoryController extends Controller
             'serial_no'=>$request->serial_no,
             'batch_no'=>$request->batch_no,
             'quantity'=>$request->quantity,
-            'min_qty'=>$request->min_qty
+            'min_qty'=>$request->min_qty,
+            'status_id'=>$request->status_id,
             
         ]);
             $notification = array(
@@ -100,13 +106,14 @@ class AccessoryController extends Controller
     public function edit(accessory $accessory, $id)
     {
         $accessory  = accessory::find($id);
-        //$categories = Category::orderBy('category_name','ASC')->get();
+        $status = Status::orderBy('status_name','ASC')->get();
         $categories = Category::where('type','Accessory')->OrderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
         return view('admin.inventorymanagement.accessory.edit')
                     ->with('accessory',$accessory)
                     ->with('categories',$categories)
-                    ->with('brands',$brands);
+                    ->with('brands',$brands)
+                    ->with('status',$status);
     }
 
     /**
@@ -134,6 +141,7 @@ class AccessoryController extends Controller
         $accessory->batch_no =$request->batch_no;
         $accessory->quantity =$request->quantity;
         $accessory->min_qty =$request->min_qty;
+        $accessory->status_id =$request->status_id;
 
         
         $accessory->save();

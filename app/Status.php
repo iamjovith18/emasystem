@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     protected $fillable = ['id','status_name'];
+    
+    public function accessory_status(){
+        return $this->hasMany('App\accessory');
+    }
 }

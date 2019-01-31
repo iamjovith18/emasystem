@@ -37,7 +37,17 @@
                             <td>{{$usercredential->lname.', '.$usercredential->fname}}</td>                       
                             <td>{{$usercredential->email_add}}</td>
                             <td>{{$usercredential->username}}</td>
-                            <td>{{$usercredential->status}}</td>
+                            <td>
+                                @if($usercredential->status==="Awol")
+                                <span class="label label-warning">{{ucfirst($usercredential->status)}}</span>
+                                @endif
+                                @if($usercredential->status==="Suspended")
+                                <span class="label label-success">{{ucfirst($usercredential->status)}}</span>
+                                @endif
+                                @if($usercredential->status==="suspended")
+                                <span class="label label-success">{{ucfirst($usercredential->status)}}</span>
+                                @endif
+                            </td>
             
                             <form class="form-horizontal" method="post" action="{{route('usermanagement.update_employee_access',['id'=>$usercredential->id])}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
                             {{csrf_field()}}

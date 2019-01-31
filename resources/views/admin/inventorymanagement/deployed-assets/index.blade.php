@@ -85,6 +85,7 @@
 										<th>Batch No.</th>
 										<th>Issued To</th>
 										<th>Date Issued</th>
+										<th>Device Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -113,8 +114,9 @@
 											   <span class="label label-success">{{ucfirst($ua->users->status)}}</span>
 											   @endif	   
 										   </b>
-										</td>    
+										</td>  
 										<td>{{date('F j,Y',strtotime($ua->created_at))}}</td>                 
+										<td>{{strtoupper($ua->accessory->status->status_name)}}</td>  
 										<td><a title="Edit" href="{{route('all-deployed-assets.edit',['id'=>$ua->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>              
 										<a title="Delete" href="{{route('all-deployed-assets.delete',['id'=>$ua->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure that you want to permanently delete the selected element?')" ><i class="icon-trash"></i></a></td>                 
 									</tr>
