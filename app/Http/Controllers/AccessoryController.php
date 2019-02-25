@@ -8,6 +8,8 @@ use App\Brand;
 use App\Usercred;
 use App\Accessory_User;
 use App\Status;
+use App\Floor;
+use App\Station;
 use Illuminate\Http\Request;
 
 
@@ -176,7 +178,10 @@ class AccessoryController extends Controller
 
         $accessory  = accessory::find($id);
        
-        return view('admin.inventorymanagement.accessory.checkout')->with('accessory',$accessory)->with('usernames',Usercred::orderBy('lname','asc')->get() );
+        return view('admin.inventorymanagement.accessory.checkout')->with('accessory',$accessory)
+                                                                   ->with('usernames',Usercred::orderBy('lname','asc')->get() )
+                                                                   ->with('floors',Floor::orderBy('floor_name','asc')->get() )
+                                                                   ->with('stations',Station::orderBy('station_name','asc')->get());
 
     }
 
@@ -184,12 +189,17 @@ class AccessoryController extends Controller
         $this->validate($request,[
             'accessory_id'=>'required',
             'username_id'=>'required',
+            'floor_id'=>'required',
+            'station_id'=>'required',  
             'order_qty'=> 'required',
+
         ]);
 
         $accessory_user = Accessory_User::create([
             'accessory_id'=>$request->accessory_id,
             'username_id'=>$request->username_id,
+            'floor_id'=>$request->floor_id,
+            'station_id'=>$request->station_id,
         ]); 
 
         $accessory = accessory::find($id)->increment('order_qty',$request->order_qty);
@@ -199,6 +209,7 @@ class AccessoryController extends Controller
             'alert-type' => 'success'
         );
 
+        
         return redirect()->route('accessory')->with($notification);
     }
 }

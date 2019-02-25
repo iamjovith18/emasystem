@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Accessory_User extends Model
 {
     public $fillable= [
-        'username_id','accessory_id','id'
+        'username_id','accessory_id','floor_id','station_id','id'
     ];
 
     public function accessory(){
@@ -18,7 +18,4 @@ class Accessory_User extends Model
         return $this->belongsTo('App\Usercred','username_id','id');
     }
 
-    
-
-   
 }

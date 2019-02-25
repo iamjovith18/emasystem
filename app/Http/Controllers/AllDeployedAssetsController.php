@@ -10,6 +10,7 @@ use App\System_Unit;
 use App\Category;
 use App\Unit_User;
 use App\Usercred;
+use App\Floor;
 
 
 class AllDeployedAssetsController extends Controller
@@ -25,11 +26,13 @@ class AllDeployedAssetsController extends Controller
         $user_components = Component_User::all();
         $user_system_units = Unit_User::all();
         $categories = Category::all();
+        $floors = Floor::all();
         return view('admin.inventorymanagement.deployed-assets.index')
                     ->with('user_accessory',$user_accessory)
                     ->with('user_components',$user_components)
                     ->with('user_system_units',$user_system_units)
-                    ->with('categories',$categories);
+                    ->with('categories',$categories)
+                    ->with('floors',$floors);
     }
 
     /**

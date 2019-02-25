@@ -38,6 +38,21 @@
                         @endforeach
                     </select>      
                 </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Floor & Station Name</label>
+                <div class="controls">
+                    <select name="floor_id" required>
+                        @foreach($floors as $f)
+                            <option value="{{$f->id}}">{{strtoupper($f->floor_name)}}</option>
+                        @endforeach
+                    </select>
+                    <select name="station_id" required >
+                        @foreach($stations as $s)
+                            <option value="{{$s->id}}">{{strtoupper($s->station_name)}}</option>
+                        @endforeach
+                    </select>       
+                </div>
             </div>    
             <div class="control-group">
                 <label class="control-label">Quantity</label>

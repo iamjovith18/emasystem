@@ -24,13 +24,11 @@ class accessory extends Model
         return $this->hasMany('App\Accessory_User','id','accessory_id');
     }
 
-    public function unit_users(){
-        return $this->hasMany('App\Accessory_User','id','accessory_id');
-    }
-
     public function status(){
         return $this->belongsTo('App\Status');
     }
+
+
 }
 
 

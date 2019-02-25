@@ -402,5 +402,69 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'administrator.delete'
     ]);
 
+  // Route computer Name Station  
+    Route::get('/station',[
+        'uses'=>'StationController@index',
+        'as'=>'station'
+    ]);
+
+    Route::get('/station/create',[
+        'uses'=>'StationController@create',
+        'as'=>'station.create'
+    ]);
+
+    Route::post('/station/store',[
+        'uses'=>'StationController@store',
+        'as'=>'station.store'
+    ]);
+
+    Route::get('/station/edit/{id}',[
+        'uses'=>'StationController@edit',
+        'as'=>'station.edit'
+    ]);
+
+    Route::post('/station/update/{id}',[
+        'uses'=>'StationController@update',
+        'as'=>'station.update'
+    ]);
+
+    Route::get('/station/delete/{id}',[
+        'uses'=>'StationController@destroy',
+        'as'=>'station.delete'
+    ]);
+
+    
+    // Route Floor
+
+    Route::get('/floor',[
+        'uses'=>'FloorController@index',
+        'as'=>'floor'
+    ]);
+
+    Route::get('/floor/create',[
+        'uses'=>'FloorController@create',
+        'as'=>'floor.create'
+    ]);
+
+    Route::post('/floor/store',[
+        'uses'=>'FloorController@store',
+        'as'=>'floor.store'
+    ]);
+
+    Route::get('/floor/edit/{id}',[
+        'uses'=>'FloorController@edit',
+        'as'=>'floor.edit'
+    ]);
+
+    Route::post('/floor/update/{id}',[
+        'uses'=>'FloorController@update',
+        'as'=>'floor.update'
+    ]);
+
+    Route::get('/floor/delete/{id}',[
+        'uses'=>'FloorController@destroy',
+        'as'=>'floor.delete'
+    ]);
+
 
 });

@@ -22,7 +22,9 @@
         <li><a href="{{route('administrator')}}">Administrator</a></li>
         <li><a href="{{route('brand')}}">Brands</a></li>
         <li><a href="{{route('category')}}">Categories</a></li>
+        <li><a href="{{route('station')}}">Computer Station</a></li>
         <li><a href="{{route('access')}}">Employee Access</a></li>
+        <li><a href="{{route('floor')}}">Floor Name</a></li>
         <li><a href="{{route('status')}}">Status</a></li>
       </ul>
     </li>

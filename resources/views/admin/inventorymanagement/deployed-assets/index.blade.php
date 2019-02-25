@@ -83,6 +83,7 @@
 										<th>Model No.</th>
 										<th>Serial No.</th>
 										<th>Batch No.</th>
+										<th>Floor & Station #</th>
 										<th>Issued To</th>
 										<th>Date Issued</th>
 										<th>Device Status</th>
@@ -99,6 +100,7 @@
 										<td>{{strtoupper($ua->accessory->model_no)}}</td>    
 										<td>{{strtoupper($ua->accessory->serial_no)}}</td>                                   
 										<td>{{strtoupper($ua->accessory->batch_no)}}</td>    
+										<td>{{$ua->floor_id}}</td>										  
 										<td>{{$ua->users->lname }}, {{$ua->users->fname}}
 											<b>  
 											   @if($ua->users->status==="Awol")
