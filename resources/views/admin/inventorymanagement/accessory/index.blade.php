@@ -59,7 +59,7 @@
                             <td>{{date('d-m-Y',strtotime($accessory->created_at))}}</td>
                             <td>{{strtoupper($accessory->status->status_name)}}</td>
                             <td>
-                              @if($accessory->quantity - $accessory->order_qty <= 0 )
+                              @if($accessory->quantity - $accessory->order_qty<=0 || $accessory->status_id !=2)
                               <a title="No Available" class="btn btn-danger" disabled><i class="icon-shopping-cart"></i></a>
                               @else
                               <a title="Checkout" href="{{route('accessory.checkout',['id'=>$accessory->id])}}" class="btn btn-primary"><i class="icon-shopping-cart"></i></a>

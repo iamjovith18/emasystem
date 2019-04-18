@@ -18,4 +18,14 @@ class Accessory_User extends Model
         return $this->belongsTo('App\Usercred','username_id','id');
     }
 
+    public function floor(){
+        return $this->belongsTo('App\Floor');
+    }
+
+    public function station(){
+        return $this->belongsTo('App\Station');
+    }
+
+    
+
 }

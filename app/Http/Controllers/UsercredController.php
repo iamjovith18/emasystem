@@ -90,6 +90,7 @@ class UsercredController extends Controller
             'batch'=>$request->batch,
             'extension_no'=>$request->extension_no,
             'status'=>$request->status,
+            'resigned_date'=>$request->resigned_date,
         ]);
         
         $usercreds->access()->attach($request->access);
@@ -114,7 +115,9 @@ class UsercredController extends Controller
         $accessory_users = Accessory_User::where('username_id',$user->id)->get();
         $system_users = Unit_User::where('username_id',$user->id)->get();
         
-        return view('admin.usermanagement.show',compact('component_users','user'))->with('accessory_users',$accessory_users)->with('system_users',$system_users);
+        return view('admin.usermanagement.show',compact('component_users','user'))
+                                            ->with('accessory_users',$accessory_users)
+                                            ->with('system_users',$system_users);
     }
 
     /**

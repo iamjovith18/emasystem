@@ -40,6 +40,7 @@
                   <th>Available</th>
                   <th>Created Date</th>
                   <th>Updated Date</th>
+                  <th>Device Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -55,8 +56,9 @@
                             <td>{{$su->total - $su->order_qty}}</td>             
                             <td>{{$su->created_at}}</td>
                             <td>{{$su->updated_at}}</td>
+                            <td>{{$su->status->status_name}}</td>
                             <td>
-                              @if($su->total - $su->order_qty < 1)
+                              @if($su->total - $su->order_qty <=0 || $su->status_id != 2)
                               <a title="No Available" class="btn btn-danger" disabled><i class="icon-shopping-cart"></i></a>
                               @else
                               <a title="Checkout" href="{{route('system-unit.checkout',['id'=>$su->id])}}" class="btn btn-primary btn-sm"><i class="icon-shopping-cart"></i></a>

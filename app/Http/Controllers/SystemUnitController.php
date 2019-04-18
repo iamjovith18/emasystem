@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\System_Unit;
 use App\Brand;
 use App\Category;
-Use App\Usercred;
-Use App\Unit_User;
+use App\Usercred;
+use App\Unit_User;
+use App\Status;
 use Illuminate\Http\Request;
 
+
+
+use \Milon\Barcode\DNS1D;
 class SystemUnitController extends Controller
 {
     /**
@@ -33,8 +37,10 @@ class SystemUnitController extends Controller
     public function create()
     {
         $brands = Brand::orderBy('brand','ASC')->get();
+        $status = Status::orderBy('status_name','ASC')->get();
         return view('admin.inventorymanagement.system-units.create')->with('brands',$brands)
-                                                                    ->with('category',Category::where('type','asset')->orderBy('category_name','ASC')->get() );
+                                                                    ->with('category',Category::where('type','asset')->orderBy('category_name','ASC')->get() )
+                                                                    ->with('status',$status);
     }
 
     /**
@@ -48,6 +54,7 @@ class SystemUnitController extends Controller
         $this->validate($request,[
             'brand_id'=> 'required',
             'category_id'=> 'required',
+            'status_id'=>'required',
         ]);
 
         $system_unit = System_Unit::create([
@@ -57,6 +64,7 @@ class SystemUnitController extends Controller
             'asset_tag'=>$request->asset_tag,
             'serial_no'=>$request->serial_no,
             'order_qty'=>0,
+            'status_id'=>$request->status_id,
             'available'=>$request->total,
             'total'=>$request->total,
             
@@ -66,6 +74,8 @@ class SystemUnitController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
+
+          //return dd($request->all());
     }
 
     /**
@@ -90,10 +100,12 @@ class SystemUnitController extends Controller
         $system_units  = System_Unit::findOrFail($id);
         $categories = Category::where('type','asset')->OrderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
+        $status = Status::orderBy('status_name','ASC')->get();
         return view('admin.inventorymanagement.system-units.edit')
                     ->with('system_units',$system_units)
                     ->with('categories',$categories)
-                    ->with('brands',$brands);
+                    ->with('brands',$brands)
+                    ->with('status',$status);
     }
 
     /**
@@ -107,7 +119,8 @@ class SystemUnitController extends Controller
     {
         $this->validate($request,[
             'category_id'=> 'required',
-            'brand_id'=> 'required'
+            'brand_id'=> 'required',
+            'status_id'=>'required',
         ]);
 
         $system_units  = System_Unit::find($id);
@@ -118,6 +131,7 @@ class SystemUnitController extends Controller
         $system_units->asset_tag = $request->asset_tag;
         $system_units->serial_no =$request->serial_no;
         $system_units->total =$request->total;
+        $system_units->status_id=$request->status_id;
 
         $system_units->save();
 

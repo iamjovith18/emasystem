@@ -99,8 +99,12 @@
 										<td>{{strtoupper($ua->accessory->category->category_name)}}</td>
 										<td>{{strtoupper($ua->accessory->model_no)}}</td>    
 										<td>{{strtoupper($ua->accessory->serial_no)}}</td>                                   
-										<td>{{strtoupper($ua->accessory->batch_no)}}</td>    
-										<td>{{$ua->floor_id}}</td>										  
+										<td>{{strtoupper($ua->accessory->batch_no)}}</td>    										  
+										@if(!empty($ua->floor->floor_name) AND !empty($ua->station->station_name) )
+										<td>{{strtoupper($ua->floor->floor_name)}} {{strtoupper($ua->station->station_name)}}</td>
+										@else
+										<td><span class="alert alert-warning">NO STATION NUMBER</span></td>
+										@endif									  
 										<td>{{$ua->users->lname }}, {{$ua->users->fname}}
 											<b>  
 											   @if($ua->users->status==="Awol")

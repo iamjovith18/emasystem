@@ -64,6 +64,16 @@
                 <div class="controls">
                   <input type="number" class="span6" name="total" value="{{$system_units->total}}" id="required">
                 </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Status</label>
+                <div class="controls">
+                    <select name="status_id" required>
+                        @foreach($status as $s)
+                          <option value="{{$s->id}}" @if($system_units->status->id==$s->id) selected @endif > {{$s->status_name}}</option>
+                        @endforeach
+                    </select> 
+                </div>
             </div>    
             <div class="form-actions">
                 <input type="submit" value="Save" class="btn btn-success">

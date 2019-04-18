@@ -11,6 +11,7 @@ use App\Category;
 use App\Unit_User;
 use App\Usercred;
 use App\Floor;
+use App\Station;
 
 
 class AllDeployedAssetsController extends Controller
@@ -78,10 +79,13 @@ class AllDeployedAssetsController extends Controller
         $user_accessory = Accessory_User::findOrFail($ua_id);
         $usernames = Usercred::orderBy('lname','asc')->get();
         $categories = Category::all();
-
+        $floors = Floor::orderBy('floor_name','ASC')->get();
+        $stations = Station::orderBy('station_name','ASC')->get();
         return view('admin.inventorymanagement.deployed-assets.edit')->with('user_accessory',$user_accessory)
                                                                      ->with('usernames',$usernames)
-                                                                     ->with('categories',$categories);
+                                                                     ->with('categories',$categories)
+                                                                     ->with('floors',$floors)
+                                                                     ->with('stations',$stations);
     }
 
     public function edit_unit($usu_id)
@@ -116,13 +120,17 @@ class AllDeployedAssetsController extends Controller
     public function update(Request $request, $ua_id)
     {
         $this->validate($request,[
-            'username_id'=> 'required'
+            'username_id'=> 'required',
+            'floor_id'=>'required',
+            'station_id'=>'required',
         ]);
            
         $user_accessory = Accessory_User::findOrFail($ua_id);
         
         $user_accessory->username_id = $request->username_id;
-       
+        $user_accessory->floor_id = $request->floor_id;
+        $user_accessory->station_id = $request->station_id;
+
 
         
         $user_accessory->save();

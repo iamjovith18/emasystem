@@ -111,6 +111,7 @@ class AccessoryController extends Controller
         $status = Status::orderBy('status_name','ASC')->get();
         $categories = Category::where('type','Accessory')->OrderBy('category_name','ASC')->get();
         $brands = Brand::orderBy('brand','ASC')->get();
+    
         return view('admin.inventorymanagement.accessory.edit')
                     ->with('accessory',$accessory)
                     ->with('categories',$categories)

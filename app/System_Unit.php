@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class System_Unit extends Model
 {
     protected $fillable = [
-        'brand_id','category_id','model','asset_tag','brand_id','serial_no','total','order_qty'
+        'brand_id','category_id','model','asset_tag','brand_id','serial_no','total','order_qty','status_id',
     ];
 
     public function brand(){
@@ -25,6 +25,10 @@ class System_Unit extends Model
     
     public function unit_user(){
         return $this->hasMany('App\Unit_User','id','system_unit_id');
+    }
+
+    public function status(){
+        return $this->belongsTo('App\Status');
     }
 
 

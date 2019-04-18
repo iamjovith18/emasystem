@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Auth;
 
 class AdministratorController extends Controller
 {
@@ -13,6 +14,12 @@ class AdministratorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /* public function __construct(){
+        $this->middleware('admin');
+    }  */
+
+    
     public function index()
     {
         return view('admin.administrator.index')->with('users',User::orderBy('name')->get() );
@@ -127,5 +134,41 @@ class AdministratorController extends Controller
             'alert-type' => 'error'
         );
         return redirect()->route('administrator')->with($notification);
+    }
+
+    public function resetpassword(){
+        return view('admin.administrator.resetpassword');
+    }
+
+    public function updatePassword(Request $request){
+        $this->validate($request,[
+            'current_password'=> 'required',
+            'new_password'=> 'required',
+            'confirm_password'=>'required',
+        ]);
+
+        $current_password = $request->current_password;
+        $new_password = $request->new_password;
+
+        if(!Hash::check($current_password,Auth::user()->password)){
+            $notification = array(
+                'message' => 'The specified password does not match.', 
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
+        else{
+            $request->user()->fill(['password'=> Hash::make($new_password)])->save();
+            $notification = array(
+                'message' => 'The password has been successfully updated.', 
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+            return redirect()->route('administrator.resetpassword')->with($notification);
+        }
+
+
+
     }
 }

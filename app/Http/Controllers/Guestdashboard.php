@@ -9,23 +9,8 @@ use App\Component;
 use App\System_Unit;
 use App\Category;
 
-class HomeController extends Controller
+class Guestdashboard extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
@@ -33,11 +18,9 @@ class HomeController extends Controller
         
 
         /* total headset */
-        $total_qty = accessory::where('category_id','=',3)->where('status_id','=',2)->sum('quantity');
-        $total_o_qty = accessory::where('category_id','=',3)->where('status_id','=',2)->sum('order_qty');
+        $total_qty = accessory::where('category_id','=',3)->sum('quantity');
+        $total_o_qty = accessory::where('category_id','=',3)->sum('order_qty');
         $total_headsets = $total_qty - $total_o_qty;
-        
-       
         /* end total headset */
         
         

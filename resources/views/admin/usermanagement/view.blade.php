@@ -30,6 +30,7 @@
                   <th>Batch</th>
                   <th>Extension #</th>
                   <th>Status</th>
+                  <th>Resigned Date</th>
                   <th>Date Created</th>                          
                   <th>Action</th>              
                 </tr>
@@ -49,11 +50,14 @@
                             <td>{{$usercredential->batch}}</td>
                             <td>{{$usercredential->extension_no}}</td>
                             <td>{{$usercredential->status}}</td>
+                            <td>{{$usercredential->resigned_date}}
                             <td>{{date('F j,Y',strtotime($usercredential->created_at))}}</td>
                             <td>
                               <a title="View" href="{{route('usermanagement.show',['id'=>$usercredential->id])}}" class="btn btn-info"><i class="icon-search"></i></a>
                               <a title="Edit" href="{{route('usermanagement.edit',['id'=>$usercredential->id])}}" class="btn btn-warning"><i class="icon-edit"></i></a>
+                              @if(auth()->user()->admin)
                               <a title="Delete" href="{{route('usermanagement.delete',['id'=>$usercredential->id])}}" class="btn btn-danger" onclick="return confirm('Are you sure do you want to delete this user?')" ><i class="icon-trash"></i></a>
+                              @endif
                             </td>
                         </tr>
                     @endforeach

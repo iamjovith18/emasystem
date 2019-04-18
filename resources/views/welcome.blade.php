@@ -1,95 +1,96 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+ 
+    <div class="row-fluid">
+      <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5>Employee Management & Assets System Dashboard Welcome</h5>
         </div>
-    </body>
-</html>
+        <div class="widget-content" >
+          <div class="row-fluid">
+            <div class="span12">
+              <ul class="site-stats">
+                <a href="{{route('usermanagement')}}"><li class="bg_lb"><i class="icon-user"></i> <strong>{{$total_users}}</strong> <strong><h5>Total Users</h5></strong></li></a>
+                
+                <!-- total headsets -->
+                @if($total_headsets >= 15)
+                <a href="{{route('accessory')}}"><li class="bg_lb"><i class="icon-headphones"></i> <strong>{{$total_headsets}}</strong> <strong><h5>Total Headsets</h5></li></a>
+                @else
+                <a href="{{route('accessory')}}"><li class="bg_lr"><i class="icon-headphones"></i><strong>{{$total_headsets}}</strong> <strong><h5>Total Headsets<span class="label label-warning">"are running out of stock!"</span></h5></li> </a>
+                @endif
+                <!-- end total headsets -->
+
+                <!-- total hdd -->
+                @if($total_hdd >= 10)
+                <a href="{{route('component')}}"><li class="bg_lb"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisks<h5></strong></li></a>
+                @else
+                <a href="{{route('component')}}"><li class="bg_lr"><i class="icon-hdd"></i> <strong>{{$total_hdd}}</strong> <strong><h5>Total Harddisks<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>       
+                @endif
+				<!-- end total hdd -->
+				
+				<!-- total ssd -->
+                @if($total_ssd >= 10)
+                <a href="{{route('component')}}"><li class="bg_lb"><i class="icon-hdd"></i> <strong>{{$total_ssd}}</strong> <strong><h5>Total SSD<h5></strong></li></a>
+                @else
+                <a href="{{route('component')}}"><li class="bg_lr"><i class="icon-hdd"></i> <strong>{{$total_ssd}}</strong> <strong><h5>Total SSD<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>       
+                @endif
+				<!-- end total ssd -->
+                
+				@if($total_kb >= 10)
+                <a href="{{route('accessory')}}"><li class="bg_lb"><i class=" icon-desktop"></i> <strong>{{$total_kb}}</strong> <strong><h5>Total Keyboards</h5></strong></li></a>
+                @else
+                <a href="{{route('accessory')}}"><li class="bg_lr"><i class="icon-desktop"></i> <strong>{{$total_kb}}</strong> <strong><h5>Total Keyboards<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+                <!--total Mouse -->
+				@if($total_m >=10)
+                <a href="{{route('accessory')}}"><li class="bg_lb"><i class="icon-hand-up"></i> <strong>{{$total_m}}</strong> <strong><h5>Total Mouse</h5></strong></li>
+                @else
+                <a href="{{route('accessory')}}"><li class="bg_lr"><i class="icon-hand-up"></i> <strong>{{$total_m}}</strong> <strong><h5>Total Mouse<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+				<!-- end total mouse -->
+				
+				<!--total Mouse/Keyboard wireless -->
+				@if($total_mk >= 10)
+                <a href="{{route('accessory')}}"><li class="bg_lb"><i class="icon-hand-up"></i> <strong>{{$total_mk}}</strong> <strong><h5>Total Wireless Mouse/Keyboard</h5></strong></li>
+                @else
+                <a href="{{route('accessory')}}"><li class="bg_lr"><i class="icon-hand-up"></i> <strong>{{$total_mk}}</strong> <strong><h5>Total Wireless Mouse/Keyboard<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+				<!-- end total mouse/keyboard wireless -->
+				
+				<!--total VGA Cable -->
+				@if($total_vga >= 10)
+                <a href="{{route('accessory')}}"><li class="bg_lb"><i class="icon-wrench"></i> <strong>{{$total_vga}}</strong> <strong><h5>Total VGA Cable</h5></strong></li>
+                @else
+                <a href="{{route('accessory')}}"><li class="bg_lr"><i class="icon-wrench"></i> <strong>{{$total_vga}}</strong> <strong><h5>Total VGA Cable<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+				<!-- end total VGA Cable -->
+				
+				<!--total HDMI Cable -->
+				@if($total_hdmi >= 10)
+                <a href="{{route('accessory')}}"><li class="bg_lb"><i class="icon-wrench"></i> <strong>{{$total_hdmi}}</strong> <strong><h5>Total HDMI Cable</h5></strong></li>
+                @else
+                <a href="{{route('accessory')}}"><li class="bg_lr"><i class="icon-wrench"></i> <strong>{{$total_hdmi}}</strong> <strong><h5>Total HDMI Cable<span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+				<!-- end total HDMI Cable -->
+				
+                <!-- total monitor -->
+                @if($total_monitor >= 10)
+                <a href="{{route('system-unit')}}"><li class="bg_lb"><i class=" icon-desktop"></i> <strong>{{$total_monitor}}</strong> <strong><h5>Total Monitors</h5></strong></li></a>
+                @else
+                <a href="{{route('system-unit')}}"><li class="bg_lr"><i class="icon-desktop"></i> <strong>{{$total_monitor}}</strong> <strong><h5>Total Monitors <span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+                <!-- end total monitor -->
+
+                <!-- total cpu -->
+                @if($total_cpu > 10)
+                <a href="{{route('system-unit')}}"><li class="bg_lb"><i class=" icon-hdd"></i> <strong>{{$total_cpu}}</strong> <strong><h5>Total System Units</h5></strong></li></a>
+                @else
+                <a href="{{route('system-unit')}}"><li class="bg_lr"><i class="icon-hdd"></i> <strong>{{$total_cpu}}</strong> <strong><h5>Total System Units <span class="label label-warning">"are running out of stock!"</span></h5></strong></li></a>
+                @endif
+                <!-- end total cpu -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--End-Chart-box-->
+

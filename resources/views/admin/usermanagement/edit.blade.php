@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Email Address</label>
+                <label class="control-label">Email Address/PC Login</label>
                 <div class="controls">
                   <input type="email" class="span6" name="email_add" value="{{$usercredential->email_add }}"  id="email">
                 </div>
@@ -48,7 +48,8 @@
               <div class="control-group">
                 <label class="control-label">Email Password</label>
                 <div class="controls">
-                  <input type="text" class="span6" name="user_password" value="{{$usercredential->password }}" id="required">
+                  <input type="text" name="user_password" class="span6" value="{{$usercredential->password }}" class="form-control" rel="gp" data-size="10" data-character-set="a-z,A-Z" id="required">
+                  <span class="input-group-btn"><button type="button" class="btn btn-primary getNewPass">Generate Password</span></button></span>
                 </div>
               </div>
               <div class="control-group">
@@ -60,7 +61,8 @@
               <div class="control-group">
                 <label class="control-label">CRMS Password</label>
                 <div class="controls">
-                  <input type="text" class="span6" name="crms_password" value="{{$usercredential->crms_password}}" id="required">
+                  <input type="text" name="crms_password" class="span6" value="{{$usercredential->crms_password}}" class="form-control" rel="gp" data-size="10" data-character-set="a-z,A-Z" id="required">
+                  <span class="input-group-btn"><button type="button" class="btn btn-primary getNewPass">Generate Password</span></button></span>
                 </div>
               </div>
               <div class="control-group">
@@ -118,13 +120,21 @@
               <div class="control-group">
                 <label class="control-label">Status</label>
                 <div class="controls">
-                  <select name="status" >
+                  <select name="status" id="status" onchange="myStatus()" >
                     <option value="{{$usercredential->status }}">{{$usercredential->status }}</option>
                     <option value="Active">Active</option>
                     <option value="Suspended">Suspended</option>
                   </select>
                 </div>
               </div>
+
+              <div class="control-group" id="resigned_field">
+                <label class="control-label">Resigned Date</label>
+                <div class="controls">
+                  <input type="date" class="span6" name="resigned_date" value="{{ old('resgined_date') }}">
+                </div>
+              </div>
+
               <div class="form-actions">
                 <input type="submit" value="Update" class="btn btn-success">
               </div>

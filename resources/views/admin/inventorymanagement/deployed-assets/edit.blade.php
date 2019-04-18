@@ -40,6 +40,21 @@
                 </div>
             </div>    
             <div class="control-group">
+                <label class="control-label">Floor & Station #</label>
+                <div class="controls">
+                    <select name="floor_id" required >
+                        @foreach($floors as $f)
+                            <option value="{{$f->id}}" @if(!empty($user_accessory->floor->id ==$f->id)) selected @endif>{{strtoupper($f->floor_name )}}</option>
+                        @endforeach
+                    </select>      
+                    <select name="station_id" required >
+                        @foreach($stations as $s)
+                            <option value="{{$s->id}}" @if(!empty($user_accessory->station->id ==$s->id)) selected @endif>{{strtoupper($s->station_name )}}</option>
+                        @endforeach
+                    </select>      
+                </div>
+            </div>    
+            <div class="control-group">
                 <label class="control-label">Quantity</label>
                 <div class="controls">
                   <input type="number" class="span6" name="order_qty" value="1" id="required" readonly>

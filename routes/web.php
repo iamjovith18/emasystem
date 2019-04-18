@@ -11,13 +11,16 @@
 |
 */
 
- Route::get('/', function () {
+
+Route::get('/', function () {
     return view('auth.login');
 });
 
 Auth::routes();
 
-//Route::get('home', 'HomeController@index')->name('home');
+Route::match(['get', 'post'], 'register', function(){
+    return redirect('/admin/home');
+});
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -400,6 +403,16 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::get('/administrator/delete/{id}',[
         'uses'=>'AdministratorController@destroy',
         'as'=>'administrator.delete'
+    ]);
+
+    Route::get('/administrator/resetpassword',[
+        'uses'=>'AdministratorController@resetpassword',
+        'as'=>'administrator.resetpassword'
+    ]);
+
+    Route::post('/admiistrator/updatepassword',[
+        'uses'=>'AdministratorController@updatePassword',
+        'as'=>'administrator.updatepassword'
     ]);
 
   // Route computer Name Station  

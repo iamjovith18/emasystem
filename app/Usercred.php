@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usercred extends Model
 {
     protected $fillable =[
-        'fname','lname','job_title','email_add','username','password','crms_password','department','batch','extension_no','status',
+        'fname','lname','job_title','email_add','username','password','crms_password','department','batch','extension_no','status','resigned_date',
     ];
 
     public function components(){
