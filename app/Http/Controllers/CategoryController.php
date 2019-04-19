@@ -117,6 +117,19 @@ class CategoryController extends Controller
     public function destroy(Category $category, $id)
     {
         $category  = Category::find($id);
+
+        foreach($category->accessory as $accessory){
+            $accessory->delete();
+        }
+
+        foreach($category->component as $component){
+            $component->delete();
+        }
+
+        foreach($category->system_unit as $system_unit){
+            $system_unit->delete();
+        }
+
         $category->delete();
 
         $notification = array(

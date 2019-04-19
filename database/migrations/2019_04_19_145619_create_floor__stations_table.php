@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccessoryFloorStationsTable extends Migration
+class CreateFloorStationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateAccessoryFloorStationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessory_floor_stations', function (Blueprint $table) {
+        Schema::create('floor__stations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('floor_id')->nullable();
+            $table->integer('station_id')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateAccessoryFloorStationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessory_floor_stations');
+        Schema::dropIfExists('floor__stations');
     }
 }

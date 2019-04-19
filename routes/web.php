@@ -479,5 +479,16 @@ Route:: group(['prefix'=>'admin','middleware'=>'auth'],function(){
         'as'=>'floor.delete'
     ]);
 
+    // Route Floor Station
+
+    Route::get('/floor-station',[
+        'uses'=>'FloorStationController@index',
+        'as'=>'floor-station'
+    ]);
+
+    Route::post('/floor-station/store',[
+        'uses'=>'FloorStationController@store',
+        'as'=>'floor-station.store'
+    ]);
 
 });
